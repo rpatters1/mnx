@@ -444,7 +444,7 @@
     "clef-type-percussion": {"level": 1, "text": "Clef 'sign' P", "link": "/docs/mnx-reference/objects/clef/"},
     "clef-type-percussion-single": {"level": 1, "text": "Clef 'sign' P, staffConfig.lines=1", "link": "/docs/mnx-reference/objects/clef/"},
     "clef-type-tab": {"level": 3, "text": "Not implemented yet; planned for 1.0"},
-    "clef-type-none": {"level": 3, "text": "Not implemented yet; planned for 1.0"},
+    "clef-type-none": {"level": 1, "text": "Clef 'hide'=true", "link": "/docs/mnx-reference/objects/clef/"},
     "clef-type-arbitrary": {"level": 2, "text": "C, F and G clefs supported at any staff position; other clef glyphs are unsupported", "link": "/docs/mnx-reference/objects/clef/"},
     "clef-position-initial": {"level": 1, "text": "Supported", "link": ""},
     "clef-position-bar-start": {"level": 1, "text": "Part measure 'clefs' key without 'position'", "link": "/docs/mnx-reference/objects/part-measure/"},

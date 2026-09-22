@@ -1,5 +1,5 @@
 {
-    "version": 37,
+    "version": 38,
     "format": {
         "name": "MNX",
         "slug": "mnx"
@@ -377,6 +377,14 @@
                         "A specific SMuFL glyph name to be used when rendering this clef, e.g. <code>gClefArrowUp</code>. See <a href=\"https://w3c-cg.github.io/smufl/latest/tables/clefs.html\">SMuFL clef glyphs</a>.",
                         "",
                         "We encourage you to use this sparingly. In the case of octave-transposing clefs, it's better to use <code>octave</code> and <code>showOctave</code> rather than just using <code>glyph</code>."
+                    ]
+                },
+                "hide": {
+                    "type": "boolean",
+                    "description": [
+                        "Whether this clef should be hidden. If true, notation should be rendered without a visible clef glyph and without any space allocated for the clef. (In CSS terms, this acts like display:none as opposed to visibility:hidden.)",
+                        "",
+                        "If not provided, the default value is false."
                     ]
                 },
                 "octave": {
