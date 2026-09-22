@@ -1,5 +1,5 @@
 {
-    "version": 36,
+    "version": 37,
     "format": {
         "name": "MNX",
         "slug": "mnx"
@@ -468,7 +468,8 @@
             "values": {
                 "C": [],
                 "F": [],
-                "G": []
+                "G": [],
+                "P": ["Percussion clef"]
             }
         },
         "sequence-content": {
