@@ -1,5 +1,5 @@
 {
-    "version": 35,
+    "version": 36,
     "format": {
         "name": "MNX",
         "slug": "mnx"
@@ -2091,6 +2091,9 @@
                 "breath": {
                     "type": "breath-mark"
                 },
+                "caesura": {
+                    "type": "caesura"
+                },
                 "softAccent": {
                     "type": "soft-accent"
                 },
@@ -2235,6 +2238,35 @@
                 "<p>Defines a breath mark. This is always encoded on the event <em>before</em> the breath happens — generally the event that contains note(s) that are performed directly before the breath.</p>"
             ]
         },
+        "caesura": {
+            "title": "caesura",
+            "kind": "dict",
+            "properties": {
+                "marks": {
+                    "type": "positive-integer",
+                    "extraJSONSchema": {
+                        "minimum": 1,
+                        "maximum": 2
+                    },
+                    "description": [
+                        "The number of marks/strokes to use in this caesura. Must be either 1 or 2.",
+                        "",
+                        "If unspecified, the default value is 2."
+                    ]
+                },
+                "shape": {
+                    "type": "caesura-shape",
+                    "description": [
+                        "The visual shape of the caesura.",
+                        "",
+                        "If unspecified, the default value is \"normal\"."
+                    ]
+                }
+            },
+            "description": [
+                "<p>Defines a caesura. This is always encoded on the event <em>before</em> the caesura happens — generally the event that contains note(s) that are performed directly before the caesura.</p>"
+            ]
+        },
         "stress-marking": {
             "title": "stress marking",
             "kind": "dict",
@@ -2346,6 +2378,27 @@
             },
             "description": [
                 "<p>The specific symbol to use for a breath mark.</p>"
+            ]
+        },
+        "caesura-shape": {
+            "title": "caesura shape",
+            "kind": "string",
+            "values": {
+                "normal": [
+                    "<span class=\"smufl\">\ue4d1</span>"
+                ],
+                "thick": [
+                    "<span class=\"smufl\">\ue4d2</span>"
+                ],
+                "short": [
+                    "<span class=\"smufl\">\ue4d3</span>"
+                ],
+                "curved": [
+                    "<span class=\"smufl\">\ue4d4</span>"
+                ]
+            },
+            "description": [
+                "<p>The specific symbol to use for a caesura mark.</p>"
             ]
         },
         "accidental-enclosure-symbol": {
