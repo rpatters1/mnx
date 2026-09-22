@@ -1,5 +1,5 @@
 {
-    "version": 39,
+    "version": 40,
     "format": {
         "name": "MNX",
         "slug": "mnx"
@@ -698,7 +698,7 @@
                 "side": {
                     "type": "slur-side",
                     "description": [
-                        "Specifies whether the tie curves upward or downward. If not provided, the consuming software should determine the value automatically according to its own logic."
+                        "Specifies whether the tie curves upward or downward. If omitted, the default value is \"auto\"."
                     ]
                 },
                 "target": {
@@ -1040,7 +1040,7 @@
                 "side": {
                     "type": "slur-side",
                     "description": [
-                        "The slur's side. If not provided, the consuming software should determine the value automatically according to its own logic."
+                        "The slur's side. If omitted, the default value is \"auto\"."
                     ]
                 },
                 "sideEnd": {
@@ -1048,7 +1048,7 @@
                     "description": [
                         "The slur’s side at the end of the slur. This is useful to encode in cases where it differs from its initial side — for example, in cross-staff notation.",
                         "",
-                        "If not provided, the consuming software should determine the value automatically according to its own logic. Usually this is the same value as <code>\"side\"</code>."
+                        "If omitted, the default value is \"auto\". Usually this is the same value as <code>\"side\"</code>."
                     ]
                 },
                 "startNote": {
@@ -1077,10 +1077,13 @@
                 ],
                 "down": [
                     "The slur/tie is curved downward (the tips face up)."
+                ],
+                "auto": [
+                    "Consuming software should determine the value automatically according to its own logic."
                 ]
             },
             "description": [
-                "<p>This indicates the placement of a slur or tie. It specifies whether the slur/tie curves upward or downward.</p>"
+                "<p>This indicates the placement of a slur or tie. It specifies whether the slur/tie curves upward or downward. For a slur, it also specifies its placement above or below the event it's attached to.</p>"
             ]
         },
         "repeat-start": {
