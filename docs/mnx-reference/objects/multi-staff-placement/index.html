@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>The multi-staff orientation object | MNX specification</title>
+<title>The multi-staff placement object | MNX specification</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" href="../../../static/styles.css">
@@ -44,17 +44,17 @@
     <a href="../../../">MNX specification</a> &gt;
     <a href="../../">MNX reference</a> &gt;
     <a href="../">Objects</a> &gt;
-    multi-staff orientation
+    multi-staff placement
 </p>
 
-<h1>The multi-staff orientation object</h1>
+<h1>The multi-staff placement object</h1>
 
 <p><b>Type:</b> String</p>
 
 
 
 
-<p>Represents a symbol's vertical orientation, with support for multi-staff music via the "between" value. See also <a href="../orientation/">orientation</a>, which doesn't support "between".</p>
+<p>Represents a symbol's vertical placement, with respect to one or more staves, including support for multi-staff music via the "between" value. See also <a href="../placement/">placement</a>, which doesn't support "between".</p>
 
 
 
@@ -77,7 +77,7 @@
 
 <tr>
     <td><nobr><b>&quot;auto&quot;</b></nobr></td>
-    <td>Consuming applications are free to use their own algorithms to determine orientation.</td>
+    <td>Consuming applications are free to use their own algorithms to determine placement.</td>
 </tr>
 
 <tr>
@@ -100,9 +100,9 @@
 
 <ul>
 
-<li><a href="../dynamic-group/">dynamic group</a>: "orient"</li>
+<li><a href="../dynamic-group/">dynamic group</a>: "placement"</li>
 
-<li><a href="../measure-repeat-counter/">measure repeat counter</a>: "orient"</li>
+<li><a href="../measure-repeat-counter/">measure repeat counter</a>: "placement"</li>
 
 </ul>
 

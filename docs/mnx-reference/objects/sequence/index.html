@@ -98,6 +98,17 @@
 </tr>
 
 <tr>
+    <td><nobr><b>directionHint</b></nobr></td>
+    <td>
+        
+        <a href="../direction-hint/">direction-hint</a>
+        
+    </td>
+    <td>No</td>
+    <td>Encodes this sequence's vertical position, relative to other sequences in the same <a href="../part-measure/">part measure</a>. Essentially, it answers the question "Is this an upper voice, or a lower voice?"<br><br>This is optional and is meant as a hint for consuming applications that structure their internal data differently depending on whether a voice is upper or lower. It can also be used as a hint for individual events' stem directions, if they're not explicitly encoded as <a href="../event/">event.stemDirection</a>.<br><br>Note it's possible for multiple sequences within the same part measure to have the same directionHint value (for example, in the case of more than two sequences).</td>
+</tr>
+
+<tr>
     <td><nobr><b>fullMeasure</b></nobr></td>
     <td>
         
@@ -106,17 +117,6 @@
     </td>
     <td>No</td>
     <td>Specifies that this sequence is a full-measure rest, and contains optional information about that full-measure rest.<br><br>Typically, full-measure rests get special treatment by notation apps: they're centered horizontally within the bar and they might use a rest glyph that doesn't necessarily match the bar's duration.<br><br>If a sequence has <code>fullMeasure</code> defined, then the sequence's <code>content</code> must be an empty array.<br><br>Note the full measure rest object has no required attributes of its own. It's valid for <code>fullMeasure</code> to be set to an empty object: <code>{}</code>. In this case, this means the sequence is indeed a full-measure rest, with default full-measure rest attributes.</td>
-</tr>
-
-<tr>
-    <td><nobr><b>orient</b></nobr></td>
-    <td>
-        
-        <a href="../orientation/">orientation</a>
-        
-    </td>
-    <td>No</td>
-    <td>The default orientation of the content in this sequence. If not provided, the orientation is determined automatically according to the implementation’s rendering rules and may be overridden by descendant elements.</td>
 </tr>
 
 <tr>

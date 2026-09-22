@@ -1,5 +1,5 @@
 {
-    "version": 38,
+    "version": 39,
     "format": {
         "name": "MNX",
         "slug": "mnx"
@@ -431,6 +431,16 @@
                         "The content of this sequence. Because the array elements are heterogeneous (event vs. grace vs. tuplet, etc.), each element has a <code>\"type\"</code>. The <code>\"type\"</code> is assumed to be <code>\"event\"</code> if left unspecified, because events are by far the most common case."
                     ]
                 },
+                "directionHint": {
+                    "type": "direction-hint",
+                    "description": [
+                        "Encodes this sequence's vertical position, relative to other sequences in the same <a href=\"../part-measure/\">part measure</a>. Essentially, it answers the question \"Is this an upper voice, or a lower voice?\"",
+                        "",
+                        "This is optional and is meant as a hint for consuming applications that structure their internal data differently depending on whether a voice is upper or lower. It can also be used as a hint for individual events' stem directions, if they're not explicitly encoded as <a href=\"../event/\">event.stemDirection</a>.",
+                        "",
+                        "Note it's possible for multiple sequences within the same part measure to have the same directionHint value (for example, in the case of more than two sequences)."
+                    ]
+                },
                 "fullMeasure": {
                     "type": "full-measure-rest",
                     "description": [
@@ -441,12 +451,6 @@
                         "If a sequence has <code>fullMeasure</code> defined, then the sequence's <code>content</code> must be an empty array.",
                         "",
                         "Note the full measure rest object has no required attributes of its own. It's valid for <code>fullMeasure</code> to be set to an empty object: <code>{}</code>. In this case, this means the sequence is indeed a full-measure rest, with default full-measure rest attributes."
-                    ]
-                },
-                "orient": {
-                    "type": "orientation",
-                    "description": [
-                        "The default orientation of the content in this sequence. If not provided, the orientation is determined automatically according to the implementation’s rendering rules and may be overridden by descendant elements."
                     ]
                 },
                 "staff": {
@@ -520,12 +524,6 @@
                 "notes": {
                     "items": [
                         "note"
-                    ]
-                },
-                "orient": {
-                    "type": "orientation",
-                    "description": [
-                        "A specific orientation for this event. If not provided, the orientation is inherited from any ancestor element that specified it. If no ancestor did so, the orientation is determined automatically according to the implementation’s rendering rules."
                     ]
                 },
                 "rest": {
@@ -869,10 +867,12 @@
                         "For example, a quarter-note triplet would use the value {\"multiple\": \"3\", \"duration\": {\"base\": \"quarter\"}}."
                     ]
                 },
-                "orient": {
-                    "type": "orientation",
+                "placement": {
+                    "type": "placement",
                     "description": [
-                        "A specific orientation for this tuplet. If not provided, the orientation is inherited from any ancestor element that specified it. If no ancestor did so, the orientation is determined automatically according to the implementation’s rendering rules."
+                        "Whether this tuplet's visual elements, such as brackets and numbers, are displayed above or below the events in the \"content\" array.",
+                        "",
+                        "If omitted, the default value is \"auto\"."
                     ]
                 },
                 "outer": {
@@ -950,8 +950,13 @@
                         "Take care when working with grace notes. If the ottava ends at a rhythmic position that is directly preceded by grace notes, use \"graceIndex: 0\" on the rhythmic position in order to include those grace notes in the ottava."
                     ]
                 },
-                "orient": {
-                    "type": "orientation"
+                "placement": {
+                    "type": "placement",
+                    "description": [
+                        "The vertical placement of the ottava mark with respect to the staff number specified in \"staff\".",
+                        "",
+                        "If omitted, the default value is \"auto\"."
+                    ]
                 },
                 "position": {
                     "type": "rhythmic-position",
@@ -1075,7 +1080,7 @@
                 ]
             },
             "description": [
-                "<p>This indicates the orientation of a slur or tie. It specifies whether the slur/tie curves upward or downward.</p>"
+                "<p>This indicates the placement of a slur or tie. It specifies whether the slur/tie curves upward or downward.</p>"
             ]
         },
         "repeat-start": {
@@ -1739,18 +1744,28 @@
                 "<p>Generally this corresponds to a single part (from the <a href=\"../root/\">top-level parts array</a>), but MNX supports encoding multiple parts in the same staff — as might be used, for example, when combining soprano and alto vocal parts into a single staff.</p>"
             ]
         },
-        "orientation": {
+        "placement": {
             "kind": "string",
             "values": {
                 "above": [],
                 "below": [],
                 "auto": [
-                    "Consuming applications are free to use their own algorithms to determine orientation."
+                    "Consuming applications are free to use their own algorithms to determine placement."
                 ]
             },
             "description": [
-                "<p>Represents a symbol's vertical orientation. See also <a href=\"../multi-staff-orientation/\">multi-staff orientation</a>, which supports multi-staff music.</p>"
+                "<p>Represents a symbol or object's vertical placement relative to an event, staff or other object. See also <a href=\"../multi-staff-placement/\">multi-staff placement</a>, which supports multi-staff music.</p>",
+                "",
+                "<p>A symbol's placement may also be used to determine other visual aspects of that symbol, such as the direction of bracket hooks or the direction the symbol points. Many symbols, however, have additional ways to specify shapes (such as <a href=\"../fermata/\">fermata</a>'s \"pointing\"), which override any changes of shape implied by placement.</p>"
             ]
+        },
+        "direction-hint": {
+            "kind": "string",
+            "values": {
+                "upper": [],
+                "lower": [],
+                "auto": []
+            }
         },
         "space": {
             "kind": "dict",
@@ -2138,8 +2153,8 @@
         "staccato": {
             "kind": "dict",
             "properties": {
-                "orient": {
-                    "type": "orientation",
+                "placement": {
+                    "type": "placement",
                     "description": [
                         "Whether this marking is displayed above or below the associated event.",
                         "",
@@ -2151,8 +2166,8 @@
         "accent": {
             "kind": "dict",
             "properties": {
-                "orient": {
-                    "type": "orientation",
+                "placement": {
+                    "type": "placement",
                     "description": [
                         "Whether this marking is displayed above or below the associated event.",
                         "",
@@ -2165,8 +2180,8 @@
             "title": "strong accent",
             "kind": "dict",
             "properties": {
-                "orient": {
-                    "type": "orientation",
+                "placement": {
+                    "type": "placement",
                     "description": [
                         "Whether this marking is displayed above or below the associated event.",
                         "",
@@ -2178,9 +2193,9 @@
                     "description": [
                         "Specifies whether this accent should point upward or downward.",
                         "",
-                        "For example: a strong accent mark above the staff (i.e., in its standard orientation) has the value \"up\".",
+                        "For example: a strong accent mark above the staff (i.e., in its standard placement) has the value \"up\".",
                         "",
-                        "If not provided, the default value is \"auto\"."
+                        "If not provided, the default value is \"auto\". In this case, consuming applications should consult \"placement\" (if provided) to determine pointing direction."
                     ]
                 }
             }
@@ -2188,8 +2203,8 @@
         "tenuto": {
             "kind": "dict",
             "properties": {
-                "orient": {
-                    "type": "orientation",
+                "placement": {
+                    "type": "placement",
                     "description": [
                         "Whether this marking is displayed above or below the associated event.",
                         "",
@@ -2201,8 +2216,8 @@
         "staccatissimo": {
             "kind": "dict",
             "properties": {
-                "orient": {
-                    "type": "orientation",
+                "placement": {
+                    "type": "placement",
                     "description": [
                         "Whether this marking is displayed above or below the associated event.",
                         "",
@@ -2214,8 +2229,8 @@
         "spiccato": {
             "kind": "dict",
             "properties": {
-                "orient": {
-                    "type": "orientation",
+                "placement": {
+                    "type": "placement",
                     "description": [
                         "Whether this marking is displayed above or below the associated event.",
                         "",
@@ -2228,8 +2243,8 @@
             "title": "breath mark",
             "kind": "dict",
             "properties": {
-                "orient": {
-                    "type": "orientation",
+                "placement": {
+                    "type": "placement",
                     "description": [
                         "Whether this marking is displayed above or below the associated event.",
                         "",
@@ -2280,8 +2295,8 @@
             "title": "stress marking",
             "kind": "dict",
             "properties": {
-                "orient": {
-                    "type": "orientation",
+                "placement": {
+                    "type": "placement",
                     "description": [
                         "Whether this marking is displayed above or below the associated event.",
                         "",
@@ -2294,8 +2309,8 @@
             "title": "unstress marking",
             "kind": "dict",
             "properties": {
-                "orient": {
-                    "type": "orientation",
+                "placement": {
+                    "type": "placement",
                     "description": [
                         "Whether this marking is displayed above or below the associated event.",
                         "",
@@ -2308,8 +2323,8 @@
             "title": "soft accent",
             "kind": "dict",
             "properties": {
-                "orient": {
-                    "type": "orientation",
+                "placement": {
+                    "type": "placement",
                     "description": [
                         "Whether this marking is displayed above or below the associated event.",
                         "",
@@ -2333,14 +2348,14 @@
                         "The number of marks to use in this tremolo. Must be between 1 and 8, inclusive."
                     ]
                 },
-                "orient": {
-                    "type": "orientation",
+                "placement": {
+                    "type": "placement",
                     "description": [
                         "Whether this marking is displayed above or below the associated event.",
                         "",
                         "If omitted, the default value is \"auto\".",
                         "",
-                        "Note that single-note tremolos are displayed over a note's stem, so generally the default value of \"auto\" is sufficient. The main reason to specify a custom \"orient\" for a single-note tremolo is for stemless notes."
+                        "Note that single-note tremolos are displayed over a note's stem, so generally the default value of \"auto\" is sufficient. The main reason to specify a custom \"placement\" for a single-note tremolo is for stemless notes."
                     ]
                 }
             }
@@ -3105,10 +3120,10 @@
                         "If unspecified, the default value is \"auto\"."
                     ]
                 },
-                "orient": {
-                    "type": "orientation",
+                "placement": {
+                    "type": "placement",
                     "description": [
-                        "The vertical orientation of this fermata's symbol with respect to the staff.",
+                        "The vertical placement of this fermata's symbol with respect to the staff.",
                         "",
                         "If unspecified, the default value is \"auto\"."
                     ]
@@ -3120,7 +3135,7 @@
                         "",
                         "For example: a standard fermata above the staff should have the value \"up\".",
                         "",
-                        "If unspecified, the default value is \"auto\"."
+                        "If unspecified, the default value is \"auto\". In this case, consuming applications should consult \"placement\" (if provided) to determine pointing direction."
                     ]
                 },
                 "symbol": {
@@ -3149,8 +3164,8 @@
                         "Whether this is an up-bow or down-bow."
                     ]
                 },
-                "orient": {
-                    "type": "orientation",
+                "placement": {
+                    "type": "placement",
                     "description": [
                         "Whether this marking is displayed above or below the associated event.",
                         "",
@@ -3311,8 +3326,8 @@
                         "If this is provided, consuming applications should use these specific glyphs. If this isn't provided, consuming applications should automatically determine the SMuFL glyphs based on \"value\", \"attackValue\" and \"relativeValue\"."
                     ]
                 },
-                "orient": {
-                    "type": "multi-staff-orientation",
+                "placement": {
+                    "type": "multi-staff-placement",
                     "description": [
                         "Where the dynamic group is positioned, relative to the staff.",
                         "",
@@ -3430,13 +3445,13 @@
                 "</ul>"
             ]
         },
-        "multi-staff-orientation": {
-            "title": "multi-staff orientation",
+        "multi-staff-placement": {
+            "title": "multi-staff placement",
             "kind": "string",
             "values": {
                 "above": [],
                 "auto": [
-                    "Consuming applications are free to use their own algorithms to determine orientation."
+                    "Consuming applications are free to use their own algorithms to determine placement."
                 ],
                 "below": [],
                 "between": [
@@ -3444,7 +3459,7 @@
                 ]
             },
             "description": [
-                "<p>Represents a symbol's vertical orientation, with support for multi-staff music via the \"between\" value. See also <a href=\"../orientation/\">orientation</a>, which doesn't support \"between\".</p>"
+                "<p>Represents a symbol's vertical placement, with respect to one or more staves, including support for multi-staff music via the \"between\" value. See also <a href=\"../placement/\">placement</a>, which doesn't support \"between\".</p>"
             ]
         },
         "dynamic-group-type": {
@@ -3582,8 +3597,8 @@
                         "The count to display."
                     ]
                 },
-                "orient": {
-                    "type": "multi-staff-orientation",
+                "placement": {
+                    "type": "multi-staff-placement",
                     "description": [
                         "Where to display the count.",
                         "",
