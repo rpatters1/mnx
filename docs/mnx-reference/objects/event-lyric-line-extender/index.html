@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>The event lyric line extender object | MNX specification</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="../../../static/styles.css">
+
+</head>
+
+<body class="has-sidenav">
+<div class="topnav">
+    <button id="toggle" class="toggle">
+        <svg viewBox="0 0 100 80" width="16" height="16" fill="currentColor">
+          <rect width="100" height="20" rx="8"></rect>
+          <rect y="30" width="100" height="20" rx="8"></rect>
+          <rect y="60" width="100" height="20" rx="8"></rect>
+        </svg>
+    </button>
+    <a class="logo" href="../../../">
+        <span class="logo-text">MNX specification</span>
+    </a>
+</div>
+
+
+<div class="content">
+    <nav class="sidenav">
+        <ul>
+<li><a href="../../../">Home</a></li>
+<li><a href="../">Reference</a>
+    <ul>
+    <li><a href="../">Objects</a></li>
+    <li><a href="../../examples/">Example documents</a></li>
+    <li><a href="../../../mnx-schema.json">Raw JSON Schema</a></li>
+    </ul>
+</li>
+<li><a href="../../../comparisons/musicxml/">MNX and MusicXML</a></li>
+</ul>
+    </nav>
+    <main>
+    
+<p class="breadcrumb">
+    <a href="../../../">MNX specification</a> &gt;
+    <a href="../../">MNX reference</a> &gt;
+    <a href="../">Objects</a> &gt;
+    event lyric line extender
+</p>
+
+<h1>The event lyric line extender object</h1>
+
+<p><b>Type:</b> Dictionary</p>
+
+
+
+
+<p>This represents a lyric extender line (also called a word extension): a horizontal line after a syllable, indicating that the syllable is sustained across subsequent events.</p>
+
+<p>An extender line is encoded on the event lyric line of the syllable that starts it.</p>
+
+
+
+<h2>Attributes</h2>
+
+<table>
+<thead>
+<tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Required?</th>
+    <th>Description</th>
+</tr>
+</thead>
+
+
+<tr>
+    <td><nobr><b>show</b></nobr></td>
+    <td>
+        
+        <a href="../boolean/">boolean</a>
+        
+    </td>
+    <td>No</td>
+    <td>Whether the syllable has an extender line. A value of false explicitly specifies that there is no extender line, even where one would normally be expected (for example, under a textless passage).<br><br>If not provided, the default value is true.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>target</b></nobr></td>
+    <td>
+        
+        <a href="../id/">ID</a>
+        
+    </td>
+    <td>No</td>
+    <td>The ID of the last event under which this extender line extends, i.e., the final event of the melisma.<br><br>The extender line covers the events from the event that starts it through the target event, including the full width of the target event. The target event should not have a syllable in the same lyric line (i.e., with the same lyric line ID).<br><br>The exact horizontal end point is left to consuming software, because engraving conventions vary. For example, some conventions end the extender lines of all lyric lines at a common point.<br><br>If not provided, consuming software should determine the extent of the extender line according to its own logic.<br><br>This is ignored if show is false.</td>
+</tr>
+
+
+</table>
+
+
+<p>Plus <a href="../global-attrs/">globally available attributes</a>:
+<b>_c</b>, <b>_x</b>, <b>id</b>
+</p>
+
+
+
+
+
+
+
+<h2>Parent objects</h2>
+
+<p>This object is used by the following parent objects:</p>
+
+<ul>
+
+<li><a href="../event-lyric-line/">event lyric line</a>: "extender"</li>
+
+</ul>
+
+
+
+
+
+
+    </main>
+</div>
+
+
+<script type="text/javascript" src="../../../static/global.js"></script>
+
+</body>
+</html>

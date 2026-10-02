@@ -664,6 +664,9 @@
         }
       ],
       "properties": {
+        "extender": {
+          "$ref": "#/$defs/event-lyric-line-extender"
+        },
         "text": {
           "$ref": "#/$defs/string"
         },
@@ -674,6 +677,23 @@
       "required": [
         "text"
       ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "event-lyric-line-extender": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/global-attrs"
+        }
+      ],
+      "properties": {
+        "show": {
+          "type": "boolean"
+        },
+        "target": {
+          "$ref": "#/$defs/id"
+        }
+      },
       "type": "object",
       "unevaluatedProperties": false
     },
@@ -2410,6 +2430,9 @@
         },
         "useBeams": {
           "type": "boolean"
+        },
+        "useLyricExtenders": {
+          "type": "boolean"
         }
       },
       "type": "object",
@@ -2744,7 +2767,7 @@
       "type": "string"
     }
   },
-  "$id": "https://w3c-cg.github.io/mnx/docs/mnx-schema.json/version/41",
+  "$id": "https://w3c-cg.github.io/mnx/docs/mnx-schema.json/version/42",
   "$ref": "#/$defs/root",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "An encoding of Common Western Music Notation.",
