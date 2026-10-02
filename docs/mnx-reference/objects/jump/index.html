@@ -54,6 +54,10 @@
 
 
 
+<p>Defines a jump: a point in the score where performance continues somewhere other than the next measure in score order.</p>
+
+<p>A jump's destination is determined by its <code>type</code>. Destinations are encoded with separate objects: <a href="../segno/">segno</a>, <a href="../coda/">coda</a> and <a href="../fine/">fine</a>. A jump whose type refers to one of these objects implies that the document contains exactly one such object.</p>
+
 
 
 <h2>Attributes</h2>
@@ -122,6 +126,10 @@
 
 <p>This object is used in the following examples:</p>
 <p>
+
+<nobr><a href="../../examples/jumps-dc-al-fine/">Jumps (D.C. al Fine)</a></nobr>,
+
+<nobr><a href="../../examples/jumps-ds-al-coda/">Jumps (D.S. al Coda)</a></nobr>,
 
 <nobr><a href="../../examples/jumps-ds-al-fine/">Jumps (D.S. al Fine)</a></nobr>,
 

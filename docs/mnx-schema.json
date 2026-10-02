@@ -288,6 +288,29 @@
       ],
       "type": "string"
     },
+    "coda": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/global-attrs"
+        }
+      ],
+      "properties": {
+        "color": {
+          "$ref": "#/$defs/color"
+        },
+        "glyph": {
+          "$ref": "#/$defs/smufl-glyph"
+        },
+        "location": {
+          "$ref": "#/$defs/rhythmic-position"
+        }
+      },
+      "required": [
+        "location"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
     "color": {
       "type": "string"
     },
@@ -996,8 +1019,13 @@
     },
     "jump-type": {
       "enum": [
+        "dc",
+        "dcalcoda",
+        "dcalfine",
+        "dsalcoda",
         "dsalfine",
-        "segno"
+        "segno",
+        "tocoda"
       ],
       "type": "string"
     },
@@ -1191,6 +1219,9 @@
       "properties": {
         "barline": {
           "$ref": "#/$defs/barline"
+        },
+        "coda": {
+          "$ref": "#/$defs/coda"
         },
         "ending": {
           "$ref": "#/$defs/ending"
@@ -2744,7 +2775,7 @@
       "type": "string"
     }
   },
-  "$id": "https://w3c-cg.github.io/mnx/docs/mnx-schema.json/version/41",
+  "$id": "https://w3c-cg.github.io/mnx/docs/mnx-schema.json/version/42",
   "$ref": "#/$defs/root",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "An encoding of Common Western Music Notation.",

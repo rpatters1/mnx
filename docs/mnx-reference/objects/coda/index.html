@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>The fine object | MNX specification</title>
+<title>The coda object | MNX specification</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" href="../../../static/styles.css">
@@ -44,19 +44,17 @@
     <a href="../../../">MNX specification</a> &gt;
     <a href="../../">MNX reference</a> &gt;
     <a href="../">Objects</a> &gt;
-    fine
+    coda
 </p>
 
-<h1>The fine object</h1>
+<h1>The coda object</h1>
 
 <p><b>Type:</b> Dictionary</p>
 
 
 
 
-<p>Defines a fine direction, which marks where performance ends after a "dcalfine" or "dsalfine" <a href="../jump/">jump</a>.</p>
-
-<p>The fine is ignored until one of those jumps has been taken.</p>
+<p>Defines a coda sign, which marks the destination of a "tocoda" <a href="../jump/">jump</a>.</p>
 
 
 
@@ -81,7 +79,18 @@
         
     </td>
     <td>No</td>
-    <td>An optional color to be used when rendering this fine direction.</td>
+    <td>An optional color to be used when rendering this object and all child objects.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>glyph</b></nobr></td>
+    <td>
+        
+        <a href="../smufl-glyph/">smufl glyph</a>
+        
+    </td>
+    <td>No</td>
+    <td>A specific SMuFL glyph name to be used when rendering this coda sign.</td>
 </tr>
 
 <tr>
@@ -92,7 +101,7 @@
         
     </td>
     <td>Yes</td>
-    <td>The location of this fine direction within the bar.</td>
+    <td>The location of this coda sign within the bar.</td>
 </tr>
 
 
@@ -115,7 +124,7 @@
 
 <ul>
 
-<li><a href="../measure-global/">measure global</a>: "fine"</li>
+<li><a href="../measure-global/">measure global</a>: "coda"</li>
 
 </ul>
 
@@ -127,9 +136,7 @@
 <p>This object is used in the following examples:</p>
 <p>
 
-<nobr><a href="../../examples/jumps-dc-al-fine/">Jumps (D.C. al Fine)</a></nobr>,
-
-<nobr><a href="../../examples/jumps-ds-al-fine/">Jumps (D.S. al Fine)</a></nobr>
+<nobr><a href="../../examples/jumps-ds-al-coda/">Jumps (D.S. al Coda)</a></nobr>
 
 </p>
 
