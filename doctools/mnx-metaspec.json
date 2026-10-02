@@ -2594,11 +2594,11 @@
                 "target": {
                     "type": "id",
                     "description": [
-                        "The ID of the event at which this extender line ends.",
+                        "The ID of the last event under which this extender line extends, i.e., the final event of the melisma.",
                         "",
-                        "The extender line covers the events from the event that starts it up to, but not including, the target event. It does not extend under the target event itself.",
+                        "The extender line covers the events from the event that starts it through the target event, including the full width of the target event. The target event should not have a syllable in the same lyric line (i.e., with the same lyric line ID).",
                         "",
-                        "The exact horizontal end point is left to consuming software, because engraving conventions vary. Typically the line ends shortly before the target event's syllable in the same lyric line (i.e., with the same lyric line ID), or shortly before the target event if it has no syllable in that lyric line. Some conventions instead end the extender lines of all lyric lines at a common point.",
+                        "The exact horizontal end point is left to consuming software, because engraving conventions vary. For example, some conventions end the extender lines of all lyric lines at a common point.",
                         "",
                         "If not provided, consuming software should determine the extent of the extender line according to its own logic.",
                         "",
