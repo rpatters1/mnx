@@ -1207,6 +1207,9 @@
         "barline": {
           "$ref": "#/$defs/barline"
         },
+        "caesura": {
+          "$ref": "#/$defs/caesura"
+        },
         "ending": {
           "$ref": "#/$defs/ending"
         },
@@ -2759,7 +2762,7 @@
       "type": "string"
     }
   },
-  "$id": "https://w3c-cg.github.io/mnx/docs/mnx-schema.json/version/42",
+  "$id": "https://w3c-cg.github.io/mnx/docs/mnx-schema.json/version/43",
   "$ref": "#/$defs/root",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "An encoding of Common Western Music Notation.",
