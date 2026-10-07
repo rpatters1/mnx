@@ -2680,15 +2680,17 @@
                 "target": {
                     "type": "id",
                     "description": [
-                        "The ID of the last event under which this extender line extends, i.e., the final event of the melisma.",
+                        "The ID of the last event under which this extender line extends. Typically this is the final event of the melisma.",
                         "",
-                        "The extender line covers the events from the event that starts it through the target event, including the full width of the target event. The target event should not have a syllable in the same lyric line (i.e., with the same lyric line ID).",
+                        "The target can be any event that occurs at or after the event containing this lyric, including that event itself. Normally it is a later event in the same sequence or voice, but it can also be in a different sequence or voice, or even in a different part. In all cases, it specifies only where the extender line ends and nothing more.",
+                        "",
+                        "The extender line extends through the full width of the target event. When the target is a later event in the same sequence or voice, it should not have a syllable in the same lyric line (i.e., with the same lyric line ID).",
                         "",
                         "The exact horizontal end point is left to consuming software, because engraving conventions vary. For example, some conventions end the extender lines of all lyric lines at a common point.",
                         "",
                         "If not provided, consuming software should determine the extent of the extender line according to its own logic.",
                         "",
-                        "This is ignored if show is false."
+                        "If \"show\" is false, the target is ignored."
                     ]
                 }
             },
