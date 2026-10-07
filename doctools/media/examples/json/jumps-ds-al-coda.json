@@ -19,7 +19,7 @@
             "highlight": ["jump"]
           }
         },
-        "jump": {"type": "tocoda", "location": {"fraction": [1, 1]}}
+        "jump": {"type": "toCoda", "location": {"fraction": [1, 1]}}
       },
       {},
       {
@@ -28,7 +28,7 @@
             "highlight": ["jump"]
           }
         },
-        "jump": {"type": "dsalcoda", "location": {"fraction": [1, 1]}}
+        "jump": {"type": "dsAlCoda", "location": {"fraction": [1, 1]}}
       },
       {
         "_x": {

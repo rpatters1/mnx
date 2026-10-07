@@ -20,7 +20,7 @@
             "highlight": ["jump"]
           }
         },
-        "jump": {"type": "dcalfine", "location": {"fraction": [1, 1]}}
+        "jump": {"type": "dcAlFine", "location": {"fraction": [1, 1]}}
       }
     ]
   },

@@ -552,7 +552,7 @@
             "blurb": [
                 "In this example, the bars are to be performed in this order: 1, 2, 3, 4, 5, 2, 3, 6.",
                 "",
-                "The \"tocoda\" jump at the end of bar 3 is ignored the first time through, because it only applies after the \"dsalcoda\" jump has been taken."
+                "The \"toCoda\" jump at the end of bar 3 is ignored the first time through, because it only applies after the \"dsAlCoda\" jump has been taken."
             ],
             "documentPath": "examples/json/jumps-ds-al-coda.json",
             "featured": false

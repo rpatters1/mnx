@@ -1225,7 +1225,7 @@
                 }
             },
             "description": [
-                "<p>Defines a coda sign, which marks the destination of a \"tocoda\" <a href=\"../jump/\">jump</a>.</p>"
+                "<p>Defines a coda sign, which marks the destination of a \"toCoda\" <a href=\"../jump/\">jump</a>.</p>"
             ]
         },
         "jump": {
@@ -1256,25 +1256,25 @@
                 "dc": [
                     "Da Capo (\"D.C.\"). Performance continues from the beginning of the piece."
                 ],
-                "dcalcoda": [
-                    "Da Capo al Coda (\"D.C. al Coda\"). Performance continues from the beginning of the piece until the \"tocoda\" jump, then continues from the <a href=\"../coda/\">coda</a> sign."
+                "dcAlCoda": [
+                    "Da Capo al Coda (\"D.C. al Coda\"). Performance continues from the beginning of the piece until the \"toCoda\" jump, then continues from the <a href=\"../coda/\">coda</a> sign."
                 ],
-                "dcalfine": [
+                "dcAlFine": [
                     "Da Capo al Fine (\"D.C. al Fine\"). Performance continues from the beginning of the piece and ends at the <a href=\"../fine/\">fine</a>."
                 ],
-                "dsalcoda": [
-                    "Dal Segno al Coda (\"D.S. al Coda\"). Performance continues from the <a href=\"../segno/\">segno</a> until the \"tocoda\" jump, then continues from the <a href=\"../coda/\">coda</a> sign."
+                "dsAlCoda": [
+                    "Dal Segno al Coda (\"D.S. al Coda\"). Performance continues from the <a href=\"../segno/\">segno</a> until the \"toCoda\" jump, then continues from the <a href=\"../coda/\">coda</a> sign."
                 ],
-                "dsalfine": [
+                "dsAlFine": [
                     "Dal Segno al Fine (\"D.S. al Fine\"). Performance continues from the <a href=\"../segno/\">segno</a> and ends at the <a href=\"../fine/\">fine</a>."
                 ],
                 "segno": [
                     "Dal Segno (\"D.S.\"). Performance continues from the <a href=\"../segno/\">segno</a>."
                 ],
-                "tocoda": [
+                "toCoda": [
                     "To Coda. Performance continues from the <a href=\"../coda/\">coda</a> sign.",
                     "",
-                    "This jump is ignored until a \"dcalcoda\" or \"dsalcoda\" jump has been taken."
+                    "This jump is ignored until a \"dcAlCoda\" or \"dsAlCoda\" jump has been taken."
                 ]
             }
         },
@@ -1296,7 +1296,7 @@
                 }
             },
             "description": [
-                "<p>Defines a fine direction, which marks where performance ends after a \"dcalfine\" or \"dsalfine\" <a href=\"../jump/\">jump</a>.</p>",
+                "<p>Defines a fine direction, which marks where performance ends after a \"dcAlFine\" or \"dsAlFine\" <a href=\"../jump/\">jump</a>.</p>",
                 "",
                 "<p>The fine is ignored until one of those jumps has been taken.</p>"
             ]
