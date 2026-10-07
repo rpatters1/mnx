@@ -53,6 +53,11 @@
             "id": "bflat-flipat-5",
             "name": "in B♭ +5",
             "transposition": {
+                "_x": {
+                    "mnxdocs": {
+                        "highlight": ["keyFifthsFlipAt"]
+                    }
+                },
                 "interval": {
                     "halfSteps": 2,
                     "staffDistance": 1
@@ -83,6 +88,11 @@
             "id": "bflat-flipat-7",
             "name": "in B♭ +7",
             "transposition": {
+                "_x": {
+                    "mnxdocs": {
+                        "highlight": ["keyFifthsFlipAt"]
+                    }
+                },
                 "interval": {
                     "halfSteps": 2,
                     "staffDistance": 1
@@ -113,6 +123,11 @@
             "id": "bflat-flipat-8",
             "name": "in B♭ +8",
             "transposition": {
+                "_x": {
+                    "mnxdocs": {
+                        "highlight": ["keyFifthsFlipAt"]
+                    }
+                },
                 "interval": {
                     "halfSteps": 2,
                     "staffDistance": 1

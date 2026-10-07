@@ -47,8 +47,13 @@
         },
         {
             "id": "eflat-flipat-7",
-            "name": "in Eb +7",
+            "name": "in E♭ +7",
             "transposition": {
+                "_x": {
+                    "mnxdocs": {
+                        "highlight": ["keyFifthsFlipAt"]
+                    }
+                },
                 "interval": {
                     "halfSteps": 9,
                     "staffDistance": 5
@@ -74,8 +79,13 @@
             ]
         },
         {
+            "_x": {
+                "mnxdocs": {
+                    "highlight": ["transposition"]
+                }
+            },
             "id": "eflat-flipat-none",
-            "name": "in Eb (no flip)",
+            "name": "in E♭ (no flip)",
             "transposition": {
                 "interval": {
                     "halfSteps": 9,
