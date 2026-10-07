@@ -288,6 +288,29 @@
       ],
       "type": "string"
     },
+    "coda": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/global-attrs"
+        }
+      ],
+      "properties": {
+        "color": {
+          "$ref": "#/$defs/color"
+        },
+        "glyph": {
+          "$ref": "#/$defs/smufl-glyph"
+        },
+        "location": {
+          "$ref": "#/$defs/rhythmic-position"
+        }
+      },
+      "required": [
+        "location"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
     "color": {
       "type": "string"
     },
@@ -1011,8 +1034,13 @@
     },
     "jump-type": {
       "enum": [
-        "dsalfine",
-        "segno"
+        "dc",
+        "dcAlCoda",
+        "dcAlFine",
+        "dsAlCoda",
+        "dsAlFine",
+        "segno",
+        "toCoda"
       ],
       "type": "string"
     },
@@ -1209,6 +1237,9 @@
         },
         "caesura": {
           "$ref": "#/$defs/caesura"
+        },
+        "coda": {
+          "$ref": "#/$defs/coda"
         },
         "ending": {
           "$ref": "#/$defs/ending"
@@ -2830,7 +2861,7 @@
       "type": "string"
     }
   },
-  "$id": "https://w3c-cg.github.io/mnx/docs/mnx-schema.json/version/44",
+  "$id": "https://w3c-cg.github.io/mnx/docs/mnx-schema.json/version/45",
   "$ref": "#/$defs/root",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "An encoding of Common Western Music Notation.",

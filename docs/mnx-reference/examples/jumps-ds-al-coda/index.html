@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>MNX example: Jumps (D.S. al Fine) | MNX specification</title>
+<title>MNX example: Jumps (D.S. al Coda) | MNX specification</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" href="../../../static/styles.css">
@@ -48,21 +48,19 @@
     <a href="../../../">MNX specification</a> &gt;
     <a href="../../">MNX reference</a> &gt;
     <a href="../">Examples</a> &gt;
-    Jumps (D.S. al Fine)
+    Jumps (D.S. al Coda)
 </p>
 
-<h1>Jumps (D.S. al Fine)</h1>
+<h1>Jumps (D.S. al Coda)</h1>
 
 
-<p><img src="../../../static/examples/jumps-ds-al-fine.png"></p>
-
-
-
-<p>In this example, the bars are to be performed in this order: 1, 2, 3, 4, 5, 2, 3.</p>
+<p><img src="../../../static/examples/jumps-ds-al-coda.png"></p>
 
 
 
-<p>See also: <a href="../../../comparisons/musicxml/#jumps-ds-al-fine">This same example in MusicXML</a> </p>
+<p>In this example, the bars are to be performed in this order: 1, 2, 3, 4, 5, 2, 3, 6.<br><br>The &quot;toCoda&quot; jump at the end of bar 3 is ignored the first time through, because it only applies after the &quot;dsAlCoda&quot; jump has been taken.</p>
+
+
 
 
 <div class="xmlmarkup">{
@@ -88,8 +86,9 @@
             <b class="markuphl">}</b>
          },
          {
-            <b class="markuphl"><a class="tag" href="../../objects/measure-global/">"fine"</a>:</b> <b class="markuphl">{</b>
-               <b class="markuphl"><a class="tag" href="../../objects/fine/">"location"</a>:</b> <b class="markuphl">{</b>
+            <b class="markuphl"><a class="tag" href="../../objects/measure-global/">"jump"</a>:</b> <b class="markuphl">{</b>
+               <b class="markuphl"><a class="tag" href="../../objects/jump/">"type"</a>:</b> <b class="markuphl"><a class="tag" href="../../objects/jump-type/">"toCoda"</a>,</b>
+               <b class="markuphl"><a class="tag" href="../../objects/jump/">"location"</a>:</b> <b class="markuphl">{</b>
                   <b class="markuphl"><a class="tag" href="../../objects/rhythmic-position/">"fraction"</a>:</b> <b class="markuphl">[</b>
                      <b class="markuphl"><a class="tag" href="../../objects/integer-unsigned/">1</a>,</b>
                      <b class="markuphl"><a class="tag" href="../../objects/integer-unsigned/">1</a></b>
@@ -100,10 +99,20 @@
          {},
          {
             <b class="markuphl"><a class="tag" href="../../objects/measure-global/">"jump"</a>:</b> <b class="markuphl">{</b>
-               <b class="markuphl"><a class="tag" href="../../objects/jump/">"type"</a>:</b> <b class="markuphl"><a class="tag" href="../../objects/jump-type/">"dsAlFine"</a>,</b>
+               <b class="markuphl"><a class="tag" href="../../objects/jump/">"type"</a>:</b> <b class="markuphl"><a class="tag" href="../../objects/jump-type/">"dsAlCoda"</a>,</b>
                <b class="markuphl"><a class="tag" href="../../objects/jump/">"location"</a>:</b> <b class="markuphl">{</b>
                   <b class="markuphl"><a class="tag" href="../../objects/rhythmic-position/">"fraction"</a>:</b> <b class="markuphl">[</b>
                      <b class="markuphl"><a class="tag" href="../../objects/integer-unsigned/">1</a>,</b>
+                     <b class="markuphl"><a class="tag" href="../../objects/integer-unsigned/">1</a></b>
+                  <b class="markuphl">]</b>
+               <b class="markuphl">}</b>
+            <b class="markuphl">}</b>
+         },
+         {
+            <b class="markuphl"><a class="tag" href="../../objects/measure-global/">"coda"</a>:</b> <b class="markuphl">{</b>
+               <b class="markuphl"><a class="tag" href="../../objects/coda/">"location"</a>:</b> <b class="markuphl">{</b>
+                  <b class="markuphl"><a class="tag" href="../../objects/rhythmic-position/">"fraction"</a>:</b> <b class="markuphl">[</b>
+                     <b class="markuphl"><a class="tag" href="../../objects/integer-unsigned/">0</a>,</b>
                      <b class="markuphl"><a class="tag" href="../../objects/integer-unsigned/">1</a></b>
                   <b class="markuphl">]</b>
                <b class="markuphl">}</b>
@@ -176,7 +185,7 @@
                               {
                                  <a class="tag" href="../../objects/note/">"pitch"</a>: {
                                     <a class="tag" href="../../objects/pitch/">"octave"</a>: <a class="tag" href="../../objects/octave/">5</a>,
-                                    <a class="tag" href="../../objects/pitch/">"step"</a>: <a class="tag" href="../../objects/step/">"C"</a>
+                                    <a class="tag" href="../../objects/pitch/">"step"</a>: <a class="tag" href="../../objects/step/">"G"</a>
                                  }
                               }
                            ]
@@ -198,6 +207,27 @@
                                  <a class="tag" href="../../objects/note/">"pitch"</a>: {
                                     <a class="tag" href="../../objects/pitch/">"octave"</a>: <a class="tag" href="../../objects/octave/">5</a>,
                                     <a class="tag" href="../../objects/pitch/">"step"</a>: <a class="tag" href="../../objects/step/">"F"</a>
+                                 }
+                              }
+                           ]
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               <a class="tag" href="../../objects/part-measure/">"sequences"</a>: [
+                  {
+                     <a class="tag" href="../../objects/sequence/">"content"</a>: [
+                        {
+                           <a class="tag" href="../../objects/event/">"duration"</a>: {
+                              <a class="tag" href="../../objects/note-value/">"base"</a>: <a class="tag" href="../../objects/note-value-base/">"whole"</a>
+                           },
+                           <a class="tag" href="../../objects/event/">"notes"</a>: [
+                              {
+                                 <a class="tag" href="../../objects/note/">"pitch"</a>: {
+                                    <a class="tag" href="../../objects/pitch/">"octave"</a>: <a class="tag" href="../../objects/octave/">5</a>,
+                                    <a class="tag" href="../../objects/pitch/">"step"</a>: <a class="tag" href="../../objects/step/">"D"</a>
                                  }
                               }
                            ]
