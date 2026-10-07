@@ -72,6 +72,17 @@
 
 
 <tr>
+    <td><nobr><b>extender</b></nobr></td>
+    <td>
+        
+        <a href="../event-lyric-line-extender/">event lyric line extender</a>
+        
+    </td>
+    <td>No</td>
+    <td>Specifies that this syllable has an extender line (also called a word extension), indicating that the syllable is sustained beyond this event.<br><br>To explicitly specify that this syllable has no extender line, use {"show": false}.<br><br>If not provided, the meaning depends on the document's <a href="../support/">useLyricExtenders</a> value. If useLyricExtenders is true, this should be interpreted as {"show": false}. If it is false (the default), consuming software should determine whether the syllable has an extender line according to its own logic.</td>
+</tr>
+
+<tr>
     <td><nobr><b>text</b></nobr></td>
     <td>
         

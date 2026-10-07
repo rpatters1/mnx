@@ -93,6 +93,17 @@
     <td>This answers the question "Are beams encoded in this document?"<br><br>If the value is true, any MNX event that is not encoded within a beam should be treated as <em>unbeamed</em>.<br><br>If the value is false (or not provided), consuming software is expected to use its own beaming algorithm to determine beams.</td>
 </tr>
 
+<tr>
+    <td><nobr><b>useLyricExtenders</b></nobr></td>
+    <td>
+        
+        <a href="../boolean/">boolean</a>
+        
+    </td>
+    <td>No</td>
+    <td>This answers the question "Does every lyric syllable that has an extender line have extender set?"<br><br>If the value is true, any event lyric line that doesn't have extender should be interpreted as having {"show": false}, i.e., no extender line.<br><br>If the value is false, consuming software is expected to use its own logic to determine whether an event lyric line without extender has an extender line, and how far it reaches.<br><br>In either case, consuming software should honor any extender that is encoded. This lets a document encode the extender lines it knows about, without needing to encode all of them.<br><br>If not provided, the default value is false.</td>
+</tr>
+
 
 </table>
 
