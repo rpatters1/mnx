@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>The notehead cluster object | MNX specification</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="../../../static/styles.css">
+
+</head>
+
+<body class="has-sidenav">
+<div class="topnav">
+    <button id="toggle" class="toggle">
+        <svg viewBox="0 0 100 80" width="16" height="16" fill="currentColor">
+          <rect width="100" height="20" rx="8"></rect>
+          <rect y="30" width="100" height="20" rx="8"></rect>
+          <rect y="60" width="100" height="20" rx="8"></rect>
+        </svg>
+    </button>
+    <a class="logo" href="../../../">
+        <span class="logo-text">MNX specification</span>
+    </a>
+</div>
+
+
+<div class="content">
+    <nav class="sidenav">
+        <ul>
+<li><a href="../../../">Home</a></li>
+<li><a href="../">Reference</a>
+    <ul>
+    <li><a href="../">Objects</a></li>
+    <li><a href="../../examples/">Example documents</a></li>
+    <li><a href="../../../mnx-schema.json">Raw JSON Schema</a></li>
+    </ul>
+</li>
+<li><a href="../../../comparisons/musicxml/">MNX and MusicXML</a></li>
+</ul>
+    </nav>
+    <main>
+    
+<p class="breadcrumb">
+    <a href="../../../">MNX specification</a> &gt;
+    <a href="../../">MNX reference</a> &gt;
+    <a href="../">Objects</a> &gt;
+    notehead cluster
+</p>
+
+<h1>The notehead cluster object</h1>
+
+<p><b>Type:</b> Dictionary</p>
+
+
+
+
+<p>A group of pitches represented by a shared notehead spanning its bottom and top notes in one event. The duration of the containing event determines whether the cluster head is closed or open, and whether it has augmentation dots. Consuming software determines the head's geometry and its attachment to stems and other rhythmic notation.</p>
+
+<p>A cluster may span multiple staves within the same part, for example to represent an arm cluster. Consuming software determines how the block crosses the space between staves.</p>
+
+<p>An event may contain multiple disjoint clusters, with ordinary notes outside their spans, including between an upper and a lower cluster. Kit notes cannot serve as endpoints.</p>
+
+
+
+<h2>Attributes</h2>
+
+<table>
+<thead>
+<tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Required?</th>
+    <th>Description</th>
+</tr>
+</thead>
+
+
+<tr>
+    <td><nobr><b>hide</b></nobr></td>
+    <td>
+        
+        <a href="../boolean/">boolean</a>
+        
+    </td>
+    <td>No</td>
+    <td>Whether to suppress the shared cluster head and its parentheses. This setting does not affect stems, flags, beams, accidentals, augmentation dots, or other markings. It does not change the cluster's rhythmic space, pitches, duration, or performance.<br><br>If omitted, the value is false.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>parentheses</b></nobr></td>
+    <td>
+        
+        <a href="../boolean/">boolean</a>
+        
+    </td>
+    <td>No</td>
+    <td>Whether to enclose the entire shared cluster head in one pair of parentheses.<br><br>If omitted, the value is false.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>pitchSelection</b></nobr></td>
+    <td>
+        
+        <a href="../notehead-cluster-pitch-selection/">notehead cluster pitch selection</a>
+        
+    </td>
+    <td>No</td>
+    <td>The selection of pitches within the cluster's span. Consuming software determines the notation used to communicate this selection, including any collective accidental signs beside the shared head. These signs apply to the cluster as a whole.<br><br>If omitted, the value is "default".</td>
+</tr>
+
+<tr>
+    <td><nobr><b>span</b></nobr></td>
+    <td>
+        
+        <a href="../id-pair/">ID pair</a>
+        
+    </td>
+    <td>Yes</td>
+    <td>The IDs of the two <a href="../note/">notes</a> that bookend this cluster. The "start" ID identifies the note with the lower sounded pitch, and the "end" ID identifies the note with the higher sounded pitch. The IDs must identify distinct notes with different sounded pitches.<br><br>Both notes must be in the containing event. They may be on different staves within the same <a href="../part/">part</a>.<br><br>The cluster includes the pitches selected by "pitchSelection" within the inclusive range bounded by the sounded pitches of its two endpoints. The endpoint pitches must belong to that selection. Only the bottom and top notes are encoded; the pitches between them are implied by "pitchSelection".<br><br>An ordinary note in the containing event must lie outside the cluster's pitch range. Cluster spans in the same event must not overlap.</td>
+</tr>
+
+
+</table>
+
+
+<p>Plus <a href="../global-attrs/">globally available attributes</a>:
+<b>_c</b>, <b>_x</b>, <b>id</b>
+</p>
+
+
+
+
+
+
+
+<h2>Parent objects</h2>
+
+<p>This object is used by the following parent objects:</p>
+
+<ul>
+
+<li><a href="../event/">event</a>: "noteheadClusters"</li>
+
+</ul>
+
+
+
+
+
+
+    </main>
+</div>
+
+
+<script type="text/javascript" src="../../../static/global.js"></script>
+
+</body>
+</html>

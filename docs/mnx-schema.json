@@ -663,6 +663,12 @@
         "markings": {
           "$ref": "#/$defs/event-markings"
         },
+        "noteheadClusters": {
+          "items": {
+            "$ref": "#/$defs/notehead-cluster"
+          },
+          "type": "array"
+        },
         "notes": {
           "items": {
             "$ref": "#/$defs/note"
@@ -1608,6 +1614,41 @@
       ],
       "type": "object",
       "unevaluatedProperties": false
+    },
+    "notehead-cluster": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/global-attrs"
+        }
+      ],
+      "properties": {
+        "hide": {
+          "type": "boolean"
+        },
+        "parentheses": {
+          "type": "boolean"
+        },
+        "pitchSelection": {
+          "$ref": "#/$defs/notehead-cluster-pitch-selection"
+        },
+        "span": {
+          "$ref": "#/$defs/id-pair"
+        }
+      },
+      "required": [
+        "span"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
+    "notehead-cluster-pitch-selection": {
+      "enum": [
+        "default",
+        "whiteKeys",
+        "blackKeys",
+        "chromatic"
+      ],
+      "type": "string"
     },
     "octave": {
       "type": "integer"
