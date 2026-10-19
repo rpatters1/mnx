@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>The notehead object | MNX specification</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="../../../static/styles.css">
+
+</head>
+
+<body class="has-sidenav">
+<div class="topnav">
+    <button id="toggle" class="toggle">
+        <svg viewBox="0 0 100 80" width="16" height="16" fill="currentColor">
+          <rect width="100" height="20" rx="8"></rect>
+          <rect y="30" width="100" height="20" rx="8"></rect>
+          <rect y="60" width="100" height="20" rx="8"></rect>
+        </svg>
+    </button>
+    <a class="logo" href="../../../">
+        <span class="logo-text">MNX specification</span>
+    </a>
+</div>
+
+
+<div class="content">
+    <nav class="sidenav">
+        <ul>
+<li><a href="../../../">Home</a></li>
+<li><a href="../">Reference</a>
+    <ul>
+    <li><a href="../">Objects</a></li>
+    <li><a href="../../examples/">Example documents</a></li>
+    <li><a href="../../../mnx-schema.json">Raw JSON Schema</a></li>
+    </ul>
+</li>
+<li><a href="../../../comparisons/musicxml/">MNX and MusicXML</a></li>
+</ul>
+    </nav>
+    <main>
+    
+<p class="breadcrumb">
+    <a href="../../../">MNX specification</a> &gt;
+    <a href="../../">MNX reference</a> &gt;
+    <a href="../">Objects</a> &gt;
+    notehead
+</p>
+
+<h1>The notehead object</h1>
+
+<p><b>Type:</b> Dictionary</p>
+
+
+
+
+<p>Describes the semantic shape and display of a single notehead. The same object is used for pitched notes and kit notes.</p>
+
+<p>An explicitly selected shape other than "default" or "custom" identifies a duration-aware family rather than a single glyph. Consuming software selects the filled, open, whole, or breve form appropriate to the event's displayed duration, where the family has such distinctions. In tuplets and multi-note tremolos, use the displayed note value rather than the elapsed performance duration. Shapes such as "x" or "plus" need not have a filled/open distinction. No general filled/open override is provided.</p>
+
+<p>Shape, parentheses, and hiding are independent. These properties do not change pitch, duration, or performance.</p>
+
+<p>MNX does not currently define staff settings that assign notehead shapes by pitch or staff position, such as shape-note or percussion notation. Applications may still encode such settings using <a href="../global-attrs/">vendor extensions</a>. When a notehead's shape is omitted or set to "default", consuming software may use those settings to choose its shape. An explicit shape, such as "oval" or "diamond", overrides that setting.</p>
+
+
+
+<h2>Attributes</h2>
+
+<table>
+<thead>
+<tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Required?</th>
+    <th>Description</th>
+</tr>
+</thead>
+
+
+<tr>
+    <td><nobr><b>glyph</b></nobr></td>
+    <td>
+        
+        <a href="../smufl-glyph/">smufl glyph</a>
+        
+    </td>
+    <td>No</td>
+    <td>An explicit SMuFL glyph for this notehead. An explicit shape is required when a glyph is supplied. Use a known shape to retain its semantics while refining its appearance, or ("custom") for an otherwise unclassified head.<br><br>The glyph overrides automatic duration-dependent glyph selection. Parentheses and other display settings still apply. The glyph does not change pitch, duration, or performance.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>hide</b></nobr></td>
+    <td>
+        
+        <a href="../boolean/">boolean</a>
+        
+    </td>
+    <td>No</td>
+    <td>Whether to suppress the notehead and its parentheses. The default is false. This setting does not affect stems, flags, beams, accidentals, augmentation dots, or other markings. The note retains its rhythmic space, pitch, duration, and performance.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>parentheses</b></nobr></td>
+    <td>
+        
+        <a href="../boolean/">boolean</a>
+        
+    </td>
+    <td>No</td>
+    <td>Whether to enclose the notehead in parentheses. The default is false. This does not change performance.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>pointing</b></nobr></td>
+    <td>
+        
+        <a href="../up-down/">up or down</a>
+        
+    </td>
+    <td>No</td>
+    <td>The direction in which the tip of a triangular notehead points, independently of stem direction. This property is only allowed when shape is "triangle".<br><br>If omitted, the default value is "up". An explicit glyph overrides the rendered appearance.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>shape</b></nobr></td>
+    <td>
+        
+        <a href="../notehead-shape/">notehead shape</a>
+        
+    </td>
+    <td>No</td>
+    <td>The semantic shape family of this notehead. Shape selection does not change pitch, duration, or performance. For example, "diamond" does not by itself specify an artificial harmonic, and "slash" does not specify pitchless notation or a beat repeat.<br><br>If omitted, the value is "default".</td>
+</tr>
+
+
+</table>
+
+
+<p>Plus <a href="../global-attrs/">globally available attributes</a>:
+<b>_c</b>, <b>_x</b>, <b>id</b>
+</p>
+
+
+
+
+
+
+
+<h2>Parent objects</h2>
+
+<p>This object is used by the following parent objects:</p>
+
+<ul>
+
+<li><a href="../kit-note/">kit note</a>: "notehead"</li>
+
+<li><a href="../note/">note</a>: "notehead"</li>
+
+</ul>
+
+
+
+
+<h2 id="examples">Examples</h2>
+
+<p>This object is used in the following examples:</p>
+<p>
+
+<nobr><a href="../../examples/notehead-shapes/">Notehead shapes and display</a></nobr>
+
+</p>
+
+
+
+    </main>
+</div>
+
+
+<script type="text/javascript" src="../../../static/global.js"></script>
+
+</body>
+</html>
