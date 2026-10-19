@@ -815,6 +815,16 @@
             "documentPath": "examples/json/measure-repeats-counter.json",
             "imagePath": "examples/measure-repeats-counter.png",
             "featured": false
+        },
+        {
+            "slug": "notehead-shapes",
+            "name": "Notehead shapes and display",
+            "blurb": [
+                "Semantic notehead shapes are independent of parentheses and hiding. Explicit glyphs refine known shapes or supply custom heads. The example also shows duration-aware diamonds, upward- and downward-pointing triangles, and an unpitched kit note."
+            ],
+            "documentPath": "examples/json/notehead-shapes.json",
+            "featured": false,
+            "imagePath": "examples/notehead-shapes.png"
         }
     ]
 }

@@ -609,6 +609,12 @@
                         "Various markings that apply to this note."
                     ]
                 },
+                "notehead": {
+                    "type": "notehead",
+                    "description": [
+                        "The shape and display settings for this note's notehead. If omitted, the consuming software decides these using its own algorithms."
+                    ]
+                },
                 "perform": {
                     "type": "perform-options",
                     "description": [
@@ -2980,6 +2986,12 @@
                         "The ID of this note's <a href=\"../kit-component/\">kit component</a>."
                     ]
                 },
+                "notehead": {
+                    "type": "notehead",
+                    "description": [
+                        "The shape and display settings for this note's notehead. If omitted, the consuming software decides these using its own algorithms."
+                    ]
+                },
                 "perform": {
                     "type": "perform-options",
                     "description": [
@@ -4037,6 +4049,135 @@
                     ]
                 }
             }
+        },
+        "notehead": {
+            "title": "notehead",
+            "kind": "dict",
+            "properties": {
+                "glyph": {
+                    "type": "smufl-glyph",
+                    "description": [
+                        "An explicit SMuFL glyph for this notehead. An explicit shape is required when a glyph is supplied. Use a known shape to retain its semantics while refining its appearance, or (\"custom\") for an otherwise unclassified head.",
+                        "",
+                        "The glyph overrides automatic duration-dependent glyph selection. Parentheses and other display settings still apply. The glyph does not change pitch, duration, or performance."
+                    ]
+                },
+                "hide": {
+                    "type": "boolean",
+                    "description": [
+                        "Whether to suppress the notehead and its parentheses. The default is false. This setting does not affect stems, flags, beams, accidentals, augmentation dots, or other markings. The note retains its rhythmic space, pitch, duration, and performance."
+                    ]
+                },
+                "parentheses": {
+                    "type": "boolean",
+                    "description": [
+                        "Whether to enclose the notehead in parentheses. The default is false. This does not change performance."
+                    ]
+                },
+                "pointing": {
+                    "type": "up-down",
+                    "description": [
+                        "The direction in which the tip of a triangular notehead points, independently of stem direction. This property is only allowed when shape is \"triangle\".",
+                        "",
+                        "If omitted, the default value is \"up\". An explicit glyph overrides the rendered appearance."
+                    ],
+                    "extraJSONSchema": {
+                        "default": "up"
+                    }
+                },
+                "shape": {
+                    "type": "notehead-shape",
+                    "description": [
+                        "The semantic shape family of this notehead. Shape selection does not change pitch, duration, or performance. For example, \"diamond\" does not by itself specify an artificial harmonic, and \"slash\" does not specify pitchless notation or a beat repeat.",
+                        "",
+                        "If omitted, the value is \"default\"."
+                    ],
+                    "extraJSONSchema": {
+                        "default": "default"
+                    }
+                }
+            },
+            "extraJSONSchema": {
+                "dependentRequired": {
+                    "glyph": [
+                        "shape"
+                    ]
+                },
+                "dependentSchemas": {
+                    "pointing": {
+                        "required": [
+                            "shape"
+                        ],
+                        "properties": {
+                            "shape": {
+                                "const": "triangle"
+                            }
+                        }
+                    },
+                    "shape": {
+                        "if": {
+                            "properties": {
+                                "shape": {
+                                    "const": "custom"
+                                }
+                            }
+                        },
+                        "then": {
+                            "required": [
+                                "glyph"
+                            ]
+                        }
+                    }
+                }
+            },
+            "description": [
+                "<p>Describes the semantic shape and display of a single notehead. The same object is used for pitched notes and kit notes.</p>",
+                "",
+                "<p>An explicitly selected shape other than \"default\" or \"custom\" identifies a duration-aware family rather than a single glyph. Consuming software selects the filled, open, whole, or breve form appropriate to the event's displayed duration, where the family has such distinctions. In tuplets and multi-note tremolos, use the displayed note value rather than the elapsed performance duration. Shapes such as \"x\" or \"plus\" need not have a filled/open distinction. No general filled/open override is provided.</p>",
+                "",
+                "<p>Shape, parentheses, and hiding are independent. These properties do not change pitch, duration, or performance.</p>",
+                "",
+                "<p>MNX does not currently define staff settings that assign notehead shapes by pitch or staff position, such as shape-note or percussion notation. Applications may still encode such settings using <a href=\"../global-attrs/\">vendor extensions</a>. When a notehead's shape is omitted or set to \"default\", consuming software may use those settings to choose its shape. An explicit shape, such as \"oval\" or \"diamond\", overrides that setting.</p>"
+            ]
+        },
+        "notehead-shape": {
+            "title": "notehead shape",
+            "kind": "string",
+            "values": {
+                "default": [
+                    "The notehead shape is determined by the consuming software. Normally it is an oval shape."
+                ],
+                "oval": [
+                    "Conventional oval notehead. Specify this when the notehead should override the consuming software's default shape explicitly to force an oval notehead."
+                ],
+                "x": [
+                    "An X-shaped notehead."
+                ],
+                "diamond": [
+                    "A diamond-shaped notehead."
+                ],
+                "triangle": [
+                    "A triangular notehead. Its tip points in the direction set by the notehead object's \"pointing\" property."
+                ],
+                "slash": [
+                    "A rhythmic slash notehead."
+                ],
+                "plus": [
+                    "A plus-shaped notehead."
+                ],
+                "circleX": [
+                    "An X enclosed in a circle."
+                ],
+                "square": [
+                    "A square notehead, as used for La in shape-note notation. This does not by itself select a shape-note system."
+                ],
+                "custom": [
+                    "An otherwise unclassified notehead. Requires an explicit glyph on the notehead object."
+                ]
+            },
+            "description": [
+                "<p>A semantic notehead shape family. Each family may include notehead glyphs for filled, open, whole, breve, etc., all the way to duplex maxima. Unless overridden by \"glyph\", the consuming software determines the applicable glyph from each family based on the displayed duration of the event.</p>"
+            ]
         }
     },
     "pageCollections": [
