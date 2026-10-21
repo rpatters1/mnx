@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>The kit notehead object | MNX specification</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="../../../static/styles.css">
+
+</head>
+
+<body class="has-sidenav">
+<div class="topnav">
+    <button id="toggle" class="toggle">
+        <svg viewBox="0 0 100 80" width="16" height="16" fill="currentColor">
+          <rect width="100" height="20" rx="8"></rect>
+          <rect y="30" width="100" height="20" rx="8"></rect>
+          <rect y="60" width="100" height="20" rx="8"></rect>
+        </svg>
+    </button>
+    <a class="logo" href="../../../">
+        <span class="logo-text">MNX specification</span>
+    </a>
+</div>
+
+
+<div class="content">
+    <nav class="sidenav">
+        <ul>
+<li><a href="../../../">Home</a></li>
+<li><a href="../">Reference</a>
+    <ul>
+    <li><a href="../">Objects</a></li>
+    <li><a href="../../examples/">Example documents</a></li>
+    <li><a href="../../../mnx-schema.json">Raw JSON Schema</a></li>
+    </ul>
+</li>
+<li><a href="../../../comparisons/musicxml/">MNX and MusicXML</a></li>
+</ul>
+    </nav>
+    <main>
+    
+<p class="breadcrumb">
+    <a href="../../../">MNX specification</a> &gt;
+    <a href="../../">MNX reference</a> &gt;
+    <a href="../">Objects</a> &gt;
+    kit notehead
+</p>
+
+<h1>The kit notehead object</h1>
+
+<p><b>Type:</b> Dictionary</p>
+
+
+
+
+<p>The default notehead design for a <a href="../kit-component/">kit component</a>. It specifies a semantic shape family, an optional glyph, a triangle direction, and a duration variant. Hiding and parentheses are properties of individual <a href="../notehead/">noteheads</a> and are not part of this design.</p>
+
+<p>Each kit note selects a duration-appropriate glyph from this design using its event's displayed duration unless "durationVariant" selects another form or an explicit glyph is supplied. A kit note whose shape is omitted or "default" uses this design. An explicit per-note shape such as "oval" replaces the design, including its glyph, triangle direction, and duration variant.</p>
+
+
+
+<h2>Attributes</h2>
+
+<table>
+<thead>
+<tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Required?</th>
+    <th>Description</th>
+</tr>
+</thead>
+
+
+<tr>
+    <td><nobr><b>durationVariant</b></nobr></td>
+    <td>
+        
+        <a href="../notehead-duration-variant/">notehead duration variant</a>
+        
+    </td>
+    <td>No</td>
+    <td>The duration-related form of the notehead, selected independently of the event's duration. This changes only the head: stems, flags, beams, augmentation dots, rhythmic duration, and performance still follow the event. An explicit glyph overrides this selection.<br><br>For this component, "default" selects the form appropriate to the displayed duration of each kit note's event.<br><br>If omitted, the value is "default".</td>
+</tr>
+
+<tr>
+    <td><nobr><b>glyph</b></nobr></td>
+    <td>
+        
+        <a href="../smufl-glyph/">smufl glyph</a>
+        
+    </td>
+    <td>No</td>
+    <td>An explicit SMuFL glyph for this notehead. An explicit shape is required when a glyph is supplied. Use a known shape to retain its semantics while refining its appearance, or ("custom") for an otherwise unclassified head.<br><br>The glyph overrides duration-dependent glyph selection, including "durationVariant". Per-note display settings still apply. The glyph does not change pitch, duration, or performance.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>pointing</b></nobr></td>
+    <td>
+        
+        <a href="../up-down/">up or down</a>
+        
+    </td>
+    <td>No</td>
+    <td>The direction in which the tip of a triangular notehead points, independently of stem direction. This property is only allowed when shape is "triangle".<br><br>If omitted, the default value is "up". An explicit glyph overrides the rendered appearance.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>shape</b></nobr></td>
+    <td>
+        
+        <a href="../notehead-shape/">notehead shape</a>
+        
+    </td>
+    <td>No</td>
+    <td>The semantic shape family for this kit component's noteheads. "default" lets consuming software determine the shape. An individual kit note can select another shape without changing this component.<br><br>If omitted, the value is "default".</td>
+</tr>
+
+
+</table>
+
+
+<p>Plus <a href="../global-attrs/">globally available attributes</a>:
+<b>_c</b>, <b>_x</b>, <b>id</b>
+</p>
+
+
+
+
+
+
+
+<h2>Parent objects</h2>
+
+<p>This object is used by the following parent objects:</p>
+
+<ul>
+
+<li><a href="../kit-component/">kit component</a>: "notehead"</li>
+
+</ul>
+
+
+
+
+<h2 id="examples">Examples</h2>
+
+<p>This object is used in the following examples:</p>
+<p>
+
+<nobr><a href="../../examples/notehead-shapes/">Notehead shapes and display</a></nobr>
+
+</p>
+
+
+
+    </main>
+</div>
+
+
+<script type="text/javascript" src="../../../static/global.js"></script>
+
+</body>
+</html>

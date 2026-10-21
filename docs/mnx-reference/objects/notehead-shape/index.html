@@ -54,7 +54,7 @@
 
 
 
-<p>A semantic notehead shape family. Each family may include notehead glyphs for filled, open, whole, breve, etc., all the way to duplex maxima. Unless overridden by "glyph", the consuming software determines the applicable glyph from each family based on the displayed duration of the event.</p>
+<p>A semantic notehead shape family. Each family may include notehead glyphs for filled, open, whole, breve, etc., all the way to duplex maxima. Unless overridden by "glyph", the consuming software determines the applicable glyph from each family based on "durationVariant" and the displayed duration of the event.</p>
 
 
 
@@ -82,7 +82,7 @@
 
 <tr>
     <td><nobr><b>&quot;default&quot;</b></nobr></td>
-    <td>The notehead shape is determined by the consuming software. Normally it is an oval shape.</td>
+    <td>For a kit note, uses the head design defined by its kit component. Otherwise, the notehead shape is determined by the consuming software. Normally it is an oval shape.</td>
 </tr>
 
 <tr>
@@ -92,7 +92,7 @@
 
 <tr>
     <td><nobr><b>&quot;oval&quot;</b></nobr></td>
-    <td>Conventional oval notehead. Specify this when the notehead should override the consuming software's default shape explicitly to force an oval notehead.</td>
+    <td>Conventional oval notehead. Specify this to override a kit component's head design or the consuming software's default shape explicitly to force an oval notehead.</td>
 </tr>
 
 <tr>
@@ -129,6 +129,8 @@
 <p>This object is used by the following parent objects:</p>
 
 <ul>
+
+<li><a href="../kit-notehead/">kit notehead</a>: "shape"</li>
 
 <li><a href="../notehead/">notehead</a>: "shape"</li>
 

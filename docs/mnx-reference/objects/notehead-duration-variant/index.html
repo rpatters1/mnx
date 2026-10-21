@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>The notehead duration variant object | MNX specification</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="../../../static/styles.css">
+
+</head>
+
+<body class="has-sidenav">
+<div class="topnav">
+    <button id="toggle" class="toggle">
+        <svg viewBox="0 0 100 80" width="16" height="16" fill="currentColor">
+          <rect width="100" height="20" rx="8"></rect>
+          <rect y="30" width="100" height="20" rx="8"></rect>
+          <rect y="60" width="100" height="20" rx="8"></rect>
+        </svg>
+    </button>
+    <a class="logo" href="../../../">
+        <span class="logo-text">MNX specification</span>
+    </a>
+</div>
+
+
+<div class="content">
+    <nav class="sidenav">
+        <ul>
+<li><a href="../../../">Home</a></li>
+<li><a href="../">Reference</a>
+    <ul>
+    <li><a href="../">Objects</a></li>
+    <li><a href="../../examples/">Example documents</a></li>
+    <li><a href="../../../mnx-schema.json">Raw JSON Schema</a></li>
+    </ul>
+</li>
+<li><a href="../../../comparisons/musicxml/">MNX and MusicXML</a></li>
+</ul>
+    </nav>
+    <main>
+    
+<p class="breadcrumb">
+    <a href="../../../">MNX specification</a> &gt;
+    <a href="../../">MNX reference</a> &gt;
+    <a href="../">Objects</a> &gt;
+    notehead duration variant
+</p>
+
+<h1>The notehead duration variant object</h1>
+
+<p><b>Type:</b> String</p>
+
+
+
+
+<p>A duration-related form within a semantic notehead shape family. Selecting a form does not change the event's duration or specify a playing technique. For example, a quarter-note event can use a half-note diamond head while retaining its quarter-note stem and rhythmic value.</p>
+
+<p>Not every family distinguishes all forms. Consuming software selects the applicable glyph within the family. An explicit glyph takes precedence over this selection.</p>
+
+
+
+
+
+<h2>Allowed values:</h2>
+
+<table>
+<thead>
+<tr>
+    <th>Value</th>
+    <th>Description</th>
+</tr>
+</thead>
+
+<tr>
+    <td><nobr><b>&quot;breve&quot;</b></nobr></td>
+    <td>The form normally used for breves.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>&quot;closed&quot;</b></nobr></td>
+    <td>The closed form normally used for quarter notes and shorter values.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>&quot;default&quot;</b></nobr></td>
+    <td>Uses the normal duration-based selection for the applicable notehead design. For a kit note using its component's design, this retains the component's duration variant. Otherwise, the form follows the event's displayed duration.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>&quot;half&quot;</b></nobr></td>
+    <td>The form normally used for half notes.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>&quot;whole&quot;</b></nobr></td>
+    <td>The form normally used for whole notes.</td>
+</tr>
+
+</table>
+
+
+
+<h2>Parent objects</h2>
+
+<p>This object is used by the following parent objects:</p>
+
+<ul>
+
+<li><a href="../kit-notehead/">kit notehead</a>: "durationVariant"</li>
+
+<li><a href="../notehead/">notehead</a>: "durationVariant"</li>
+
+</ul>
+
+
+
+
+<h2 id="examples">Examples</h2>
+
+<p>This object is used in the following examples:</p>
+<p>
+
+<nobr><a href="../../examples/notehead-shapes/">Notehead shapes and display</a></nobr>
+
+</p>
+
+
+
+    </main>
+</div>
+
+
+<script type="text/javascript" src="../../../static/global.js"></script>
+
+</body>
+</html>
