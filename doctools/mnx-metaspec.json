@@ -3485,6 +3485,17 @@
                         "If omitted, the value is \"default\"."
                     ]
                 },
+                "shape": {
+                    "type": "notehead-cluster-shape",
+                    "description": [
+                        "The shape family of the shared cluster head. The event's displayed duration determines the applicable closed or open form. Consuming software determines the geometry needed to span the endpoint notes.",
+                        "",
+                        "If omitted, the value is \"default\"."
+                    ],
+                    "extraJSONSchema": {
+                        "default": "default"
+                    }
+                },
                 "span": {
                     "type": "id-pair",
                     "required": true,
@@ -3500,9 +3511,9 @@
                 }
             },
             "description": [
-                "<p>A group of pitches represented by a shared notehead spanning its bottom and top notes in one event. The duration of the containing event determines whether the cluster head is closed or open, and whether it has augmentation dots. Consuming software determines the head's geometry and its attachment to stems and other rhythmic notation.</p>",
+                "<p>A group of pitches represented by a shared notehead spanning its bottom and top notes in one event. The displayed duration of the containing event determines whether the cluster head is closed or open, and whether it has augmentation dots. The \"shape\" property selects the cluster head's shape family. Consuming software determines the head's geometry and its attachment to stems and other rhythmic notation.</p>",
                 "",
-                "<p>A cluster may span multiple staves within the same part, for example to represent an arm cluster. Consuming software determines how the block crosses the space between staves.</p>",
+                "<p>A cluster may span multiple staves within the same part, for example to represent an arm cluster. Consuming software determines how the shared head crosses the space between staves.</p>",
                 "",
                 "<p>An event may contain multiple disjoint clusters, with ordinary notes outside their spans, including between an upper and a lower cluster. Kit notes cannot serve as endpoints.</p>"
             ]
@@ -3526,6 +3537,27 @@
             },
             "description": [
                 "<p>The semantic pitch selection for a notehead cluster. Keyboard key colors refer to sounded pitches, independent of their enharmonic spelling, key signature, or transposed display.</p>"
+            ]
+        },
+        "notehead-cluster-shape": {
+            "title": "notehead cluster shape",
+            "kind": "string",
+            "values": {
+                "default": [
+                    "The cluster shape is determined by the consuming software."
+                ],
+                "box": [
+                    "A rectangular block spanning the endpoint notes."
+                ],
+                "oval": [
+                    "Oval noteheads at the endpoint notes, joined by a thick line."
+                ],
+                "diamond": [
+                    "Diamond noteheads at the endpoint notes, joined by a thick line."
+                ]
+            },
+            "description": [
+                "<p>A shape family for a shared cluster head. The consuming software determines its proportions and construction for the cluster's span and the event's displayed duration. The shape does not change the pitches selected by \"pitchSelection\" or prescribe a performance technique.</p>"
             ]
         },
         "id-pair": {
