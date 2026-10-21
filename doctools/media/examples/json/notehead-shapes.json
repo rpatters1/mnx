@@ -81,6 +81,12 @@
           "count": 4,
           "unit": 4
         }
+      },
+      {
+        "time": {
+          "count": 4,
+          "unit": 4
+        }
       }
     ]
   },
@@ -600,14 +606,174 @@
               "content": [
                 {
                   "duration": {
-                    "base": "whole"
+                    "base": "quarter"
+                  },
+                  "kitNotes": [
+                    {
+                      "kitComponent": "cymbal",
+                      "_x": {
+                        "mnxdocs": {
+                          "highlight": [
+                            "kitComponent"
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "duration": {
+                    "base": "quarter"
                   },
                   "kitNotes": [
                     {
                       "kitComponent": "cymbal",
                       "notehead": {
-                        "shape": "circleX",
                         "parentheses": true
+                      },
+                      "_x": {
+                        "mnxdocs": {
+                          "highlight": [
+                            "notehead"
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "duration": {
+                    "base": "quarter"
+                  },
+                  "kitNotes": [
+                    {
+                      "kitComponent": "cymbal",
+                      "notehead": {
+                        "shape": "default"
+                      },
+                      "_x": {
+                        "mnxdocs": {
+                          "highlight": [
+                            "notehead"
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "duration": {
+                    "base": "quarter"
+                  },
+                  "kitNotes": [
+                    {
+                      "kitComponent": "cymbal",
+                      "notehead": {
+                        "shape": "oval"
+                      },
+                      "_x": {
+                        "mnxdocs": {
+                          "highlight": [
+                            "notehead"
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sequences": [
+            {
+              "content": [
+                {
+                  "duration": {
+                    "base": "quarter"
+                  },
+                  "notes": [
+                    {
+                      "pitch": {
+                        "step": "C",
+                        "octave": 5
+                      },
+                      "notehead": {
+                        "shape": "diamond",
+                        "durationVariant": "closed"
+                      },
+                      "_x": {
+                        "mnxdocs": {
+                          "highlight": [
+                            "notehead"
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "duration": {
+                    "base": "quarter"
+                  },
+                  "notes": [
+                    {
+                      "pitch": {
+                        "step": "C",
+                        "octave": 5
+                      },
+                      "notehead": {
+                        "shape": "diamond",
+                        "durationVariant": "half"
+                      },
+                      "_x": {
+                        "mnxdocs": {
+                          "highlight": [
+                            "notehead"
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "duration": {
+                    "base": "quarter"
+                  },
+                  "notes": [
+                    {
+                      "pitch": {
+                        "step": "C",
+                        "octave": 5
+                      },
+                      "notehead": {
+                        "shape": "diamond",
+                        "durationVariant": "whole"
+                      },
+                      "_x": {
+                        "mnxdocs": {
+                          "highlight": [
+                            "notehead"
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "duration": {
+                    "base": "quarter"
+                  },
+                  "notes": [
+                    {
+                      "pitch": {
+                        "step": "C",
+                        "octave": 5
+                      },
+                      "notehead": {
+                        "shape": "diamond",
+                        "durationVariant": "breve"
                       },
                       "_x": {
                         "mnxdocs": {
@@ -627,7 +793,18 @@
       "kit": {
         "cymbal": {
           "name": "Cymbal",
-          "staffPosition": 4
+          "staffPosition": 4,
+          "notehead": {
+            "shape": "x",
+            "durationVariant": "closed"
+          },
+          "_x": {
+            "mnxdocs": {
+              "highlight": [
+                "notehead"
+              ]
+            }
+          }
         }
       }
     }

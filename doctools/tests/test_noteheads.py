@@ -71,12 +71,107 @@ class NoteheadSchemaTests(unittest.TestCase):
                     self.assertFalse(self.validator.is_valid(self.with_head(head, kit)))
 
     def test_optional_enum_defaults(self):
-        for slug, prop in (('notehead', 'shape'),):
+        for slug, prop in (
+            ('notehead', 'shape'), ('kit-notehead', 'shape'),
+            ('notehead', 'durationVariant'), ('kit-notehead', 'durationVariant'),
+        ):
             with self.subTest(slug=slug, prop=prop):
                 attribute = self.schema['$defs'][slug]['properties'][prop]
                 self.assertEqual(attribute['default'], 'default')
                 definition = self.schema['$defs'][attribute['$ref'].split('/')[-1]]
                 self.assertIn(attribute['default'], definition['enum'])
+
+    def test_kit_component_designs(self):
+        for head in (
+            {}, {'shape': 'default'}, {'shape': 'oval'}, {'shape': 'x'},
+            {'shape': 'triangle', 'pointing': 'down'},
+            {'shape': 'x', 'glyph': 'noteheadXOrnateEllipse'},
+            {'shape': 'custom', 'glyph': 'noteheadBlack'},
+        ):
+            document = self.with_head({}, kit=True)
+            document['parts'][0]['kit']['cymbal']['notehead'] = head
+            for duration in ('quarter', 'half', 'whole', 'breve'):
+                event = document['parts'][0]['measures'][0]['sequences'][0]['content'][0]
+                event['duration']['base'] = duration
+                with self.subTest(head=head, duration=duration):
+                    self.validator.validate(document)
+        for head in (
+            {'hide': False}, {'parentheses': False},
+            {'shape': 'custom'}, {'glyph': 'noteheadBlack'},
+            {'pointing': 'down'}, {'shape': 'x', 'pointing': 'down'},
+            {'shape': 'triangle', 'pointing': 'left'},
+            {'shape': 'unknown'}, {'size': 'cue'}, {'color': '#ff0000'},
+        ):
+            document = self.with_head({}, kit=True)
+            document['parts'][0]['kit']['cymbal']['notehead'] = head
+            with self.subTest(head=head):
+                self.assertFalse(self.validator.is_valid(document))
+        pointing = self.schema['$defs']['kit-notehead']['properties']['pointing']
+        self.assertEqual(pointing['default'], 'up')
+
+    def test_kit_component_and_per_note_designs(self):
+        for component in (
+            {'shape': 'x'},
+            {'shape': 'triangle', 'pointing': 'down'},
+            {'shape': 'custom', 'glyph': 'noteheadXOrnateEllipse'},
+        ):
+            for override in (
+                None, {}, {'shape': 'default'}, {'parentheses': True},
+                {'hide': True}, {'shape': 'oval'},
+                {'shape': 'triangle'},
+                {'shape': 'default', 'glyph': 'noteheadBlack'},
+            ):
+                document = self.with_head(override, kit=True)
+                document['parts'][0]['kit']['cymbal']['notehead'] = component
+                if override is None:
+                    event = document['parts'][0]['measures'][0]['sequences'][0]['content'][0]
+                    event['kitNotes'][0].pop('notehead')
+                with self.subTest(component=component, override=override):
+                    self.validator.validate(document)
+        # A component's glyph does not satisfy the local custom-shape constraint.
+        document = self.with_head({'shape': 'custom'}, kit=True)
+        document['parts'][0]['kit']['cymbal']['notehead'] = {
+            'shape': 'custom', 'glyph': 'noteheadBlack',
+        }
+        self.assertFalse(self.validator.is_valid(document))
+
+    def test_duration_variants(self):
+        for location in ('pitched', 'kit-note', 'kit-component'):
+            for variant in ('default', 'closed', 'half', 'whole', 'breve'):
+                for duration in ('quarter', 'half', 'whole', 'breve', 'duplexMaxima'):
+                    head = {'shape': 'diamond', 'durationVariant': variant}
+                    document = self.with_head(
+                        head if location != 'kit-component' else {},
+                        kit=location != 'pitched', duration=duration)
+                    if location == 'kit-component':
+                        document['parts'][0]['kit']['cymbal']['notehead'] = head
+                    with self.subTest(location=location, variant=variant, duration=duration):
+                        self.validator.validate(document)
+            for invalid in ('open', 'quarter', 'black', 'white', 'unknown', None, True, 1):
+                head = {'durationVariant': invalid}
+                document = self.with_head(head, kit=location != 'pitched')
+                if location == 'kit-component':
+                    event = document['parts'][0]['measures'][0]['sequences'][0]['content'][0]
+                    event['kitNotes'][0]['notehead'] = {}
+                    document['parts'][0]['kit']['cymbal']['notehead'] = head
+                with self.subTest(location=location, invalid=invalid):
+                    self.assertFalse(self.validator.is_valid(document))
+
+    def test_duration_variant_with_component_design_and_glyph(self):
+        for head in (
+            {}, {'shape': 'default', 'durationVariant': 'default'},
+            {'durationVariant': 'closed'},
+            {'shape': 'diamond', 'durationVariant': 'default'},
+            {'shape': 'oval', 'durationVariant': 'whole'},
+            {'shape': 'default', 'durationVariant': 'breve', 'glyph': 'noteheadBlack'},
+            {'shape': 'custom', 'durationVariant': 'half', 'glyph': 'noteheadBlack'},
+        ):
+            document = self.with_head(head, kit=True)
+            document['parts'][0]['kit']['cymbal']['notehead'] = {
+                'shape': 'diamond', 'durationVariant': 'half',
+            }
+            with self.subTest(head=head):
+                self.validator.validate(document)
 
     def test_clusters_are_not_supported(self):
         document = copy.deepcopy(self.document)
