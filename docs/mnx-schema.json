@@ -1631,6 +1631,10 @@
         "pitchSelection": {
           "$ref": "#/$defs/notehead-cluster-pitch-selection"
         },
+        "shape": {
+          "$ref": "#/$defs/notehead-cluster-shape",
+          "default": "default"
+        },
         "span": {
           "$ref": "#/$defs/id-pair"
         }
@@ -1647,6 +1651,15 @@
         "whiteKeys",
         "blackKeys",
         "chromatic"
+      ],
+      "type": "string"
+    },
+    "notehead-cluster-shape": {
+      "enum": [
+        "default",
+        "box",
+        "oval",
+        "diamond"
       ],
       "type": "string"
     },

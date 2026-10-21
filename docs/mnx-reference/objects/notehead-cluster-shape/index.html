@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>The notehead cluster shape object | MNX specification</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="../../../static/styles.css">
+
+</head>
+
+<body class="has-sidenav">
+<div class="topnav">
+    <button id="toggle" class="toggle">
+        <svg viewBox="0 0 100 80" width="16" height="16" fill="currentColor">
+          <rect width="100" height="20" rx="8"></rect>
+          <rect y="30" width="100" height="20" rx="8"></rect>
+          <rect y="60" width="100" height="20" rx="8"></rect>
+        </svg>
+    </button>
+    <a class="logo" href="../../../">
+        <span class="logo-text">MNX specification</span>
+    </a>
+</div>
+
+
+<div class="content">
+    <nav class="sidenav">
+        <ul>
+<li><a href="../../../">Home</a></li>
+<li><a href="../">Reference</a>
+    <ul>
+    <li><a href="../">Objects</a></li>
+    <li><a href="../../examples/">Example documents</a></li>
+    <li><a href="../../../mnx-schema.json">Raw JSON Schema</a></li>
+    </ul>
+</li>
+<li><a href="../../../comparisons/musicxml/">MNX and MusicXML</a></li>
+</ul>
+    </nav>
+    <main>
+    
+<p class="breadcrumb">
+    <a href="../../../">MNX specification</a> &gt;
+    <a href="../../">MNX reference</a> &gt;
+    <a href="../">Objects</a> &gt;
+    notehead cluster shape
+</p>
+
+<h1>The notehead cluster shape object</h1>
+
+<p><b>Type:</b> String</p>
+
+
+
+
+<p>A shape family for a shared cluster head. The consuming software determines its proportions and construction for the cluster's span and the event's displayed duration. The shape does not change the pitches selected by "pitchSelection" or prescribe a performance technique.</p>
+
+
+
+
+
+<h2>Allowed values:</h2>
+
+<table>
+<thead>
+<tr>
+    <th>Value</th>
+    <th>Description</th>
+</tr>
+</thead>
+
+<tr>
+    <td><nobr><b>&quot;box&quot;</b></nobr></td>
+    <td>A rectangular block spanning the endpoint notes.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>&quot;default&quot;</b></nobr></td>
+    <td>The cluster shape is determined by the consuming software.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>&quot;diamond&quot;</b></nobr></td>
+    <td>Diamond noteheads at the endpoint notes, joined by a thick line.</td>
+</tr>
+
+<tr>
+    <td><nobr><b>&quot;oval&quot;</b></nobr></td>
+    <td>Oval noteheads at the endpoint notes, joined by a thick line.</td>
+</tr>
+
+</table>
+
+
+
+<h2>Parent objects</h2>
+
+<p>This object is used by the following parent objects:</p>
+
+<ul>
+
+<li><a href="../notehead-cluster/">notehead cluster</a>: "shape"</li>
+
+</ul>
+
+
+
+
+
+
+    </main>
+</div>
+
+
+<script type="text/javascript" src="../../../static/global.js"></script>
+
+</body>
+</html>

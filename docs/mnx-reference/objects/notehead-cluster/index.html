@@ -54,9 +54,9 @@
 
 
 
-<p>A group of pitches represented by a shared notehead spanning its bottom and top notes in one event. The duration of the containing event determines whether the cluster head is closed or open, and whether it has augmentation dots. Consuming software determines the head's geometry and its attachment to stems and other rhythmic notation.</p>
+<p>A group of pitches represented by a shared notehead spanning its bottom and top notes in one event. The displayed duration of the containing event determines whether the cluster head is closed or open, and whether it has augmentation dots. The "shape" property selects the cluster head's shape family. Consuming software determines the head's geometry and its attachment to stems and other rhythmic notation.</p>
 
-<p>A cluster may span multiple staves within the same part, for example to represent an arm cluster. Consuming software determines how the block crosses the space between staves.</p>
+<p>A cluster may span multiple staves within the same part, for example to represent an arm cluster. Consuming software determines how the shared head crosses the space between staves.</p>
 
 <p>An event may contain multiple disjoint clusters, with ordinary notes outside their spans, including between an upper and a lower cluster. Kit notes cannot serve as endpoints.</p>
 
@@ -106,6 +106,17 @@
     </td>
     <td>No</td>
     <td>The selection of pitches within the cluster's span. Consuming software determines the notation used to communicate this selection, including any collective accidental signs beside the shared head. These signs apply to the cluster as a whole.<br><br>If omitted, the value is "default".</td>
+</tr>
+
+<tr>
+    <td><nobr><b>shape</b></nobr></td>
+    <td>
+        
+        <a href="../notehead-cluster-shape/">notehead cluster shape</a>
+        
+    </td>
+    <td>No</td>
+    <td>The shape family of the shared cluster head. The event's displayed duration determines the applicable closed or open form. Consuming software determines the geometry needed to span the endpoint notes.<br><br>If omitted, the value is "default".</td>
 </tr>
 
 <tr>
