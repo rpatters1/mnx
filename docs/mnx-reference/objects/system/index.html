@@ -58,6 +58,8 @@
 
 <p>This element is used in context of a <a href="../page/">page</a>. Each system specifies its starting measure number and can optionally specify a layout.</p>
 
+<p>A system has a single fixed layout, including the number and order of staves, their groups, symbols, and barline connections. Changes within the system, such as stem directions, which sources feed a staff, or cutaways, are expressed per staff via "staffChanges".</p>
+
 
 
 <h2>Attributes</h2>
@@ -85,17 +87,17 @@
 </tr>
 
 <tr>
-    <td><nobr><b>layoutChanges</b></nobr></td>
+    <td><nobr><b>staffChanges</b></nobr></td>
     <td>
         
             An array of
             
-            <a href="../layout-change/">layout change objects</a>
+            <a href="../staff-change/">staff change objects</a>
             
         
     </td>
     <td>No</td>
-    <td></td>
+    <td>Optional changes to individual staves within this system. Each <a href="../staff-change/">staff change</a> overrides a single staff of this system's layout for a range of rhythmic positions, leaving every other staff unchanged.<br><br>For a given staff, the ranges of its staff changes must not overlap.</td>
 </tr>
 
 <tr>
@@ -140,6 +142,8 @@
 
 <p>This object is used in the following examples:</p>
 <p>
+
+<nobr><a href="../../examples/cutaway-staff/">Cutaway staff</a></nobr>,
 
 <nobr><a href="../../examples/multimeasure-rests/">Multimeasure rests</a></nobr>,
 

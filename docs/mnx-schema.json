@@ -1165,27 +1165,6 @@
     "language-code": {
       "type": "string"
     },
-    "layout-change": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/global-attrs"
-        }
-      ],
-      "properties": {
-        "layout": {
-          "$ref": "#/$defs/id"
-        },
-        "location": {
-          "$ref": "#/$defs/measure-rhythmic-position"
-        }
-      },
-      "required": [
-        "layout",
-        "location"
-      ],
-      "type": "object",
-      "unevaluatedProperties": false
-    },
     "line-type": {
       "enum": [
         "dashed",
@@ -2483,6 +2462,67 @@
       "type": "object",
       "unevaluatedProperties": false
     },
+    "staff-change": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/global-attrs"
+        }
+      ],
+      "oneOf": [
+        {
+          "properties": {
+            "cutaway": {
+              "const": false
+            }
+          },
+          "required": [
+            "sources"
+          ]
+        },
+        {
+          "not": {
+            "required": [
+              "sources"
+            ]
+          },
+          "properties": {
+            "cutaway": {
+              "const": true
+            }
+          },
+          "required": [
+            "cutaway"
+          ]
+        }
+      ],
+      "properties": {
+        "cutaway": {
+          "type": "boolean"
+        },
+        "end": {
+          "$ref": "#/$defs/measure-rhythmic-position"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/$defs/staff-source"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "staff": {
+          "$ref": "#/$defs/id"
+        },
+        "start": {
+          "$ref": "#/$defs/measure-rhythmic-position"
+        }
+      },
+      "required": [
+        "staff",
+        "start"
+      ],
+      "type": "object",
+      "unevaluatedProperties": false
+    },
     "staff-config": {
       "allOf": [
         {
@@ -2682,14 +2722,14 @@
         "layout": {
           "$ref": "#/$defs/id"
         },
-        "layoutChanges": {
-          "items": {
-            "$ref": "#/$defs/layout-change"
-          },
-          "type": "array"
-        },
         "measure": {
           "$ref": "#/$defs/id"
+        },
+        "staffChanges": {
+          "items": {
+            "$ref": "#/$defs/staff-change"
+          },
+          "type": "array"
         }
       },
       "required": [
@@ -3055,7 +3095,7 @@
       "type": "string"
     }
   },
-  "$id": "https://w3c-cg.github.io/mnx/docs/mnx-schema.json/version/52",
+  "$id": "https://w3c-cg.github.io/mnx/docs/mnx-schema.json/version/53",
   "$ref": "#/$defs/root",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "An encoding of Common Western Music Notation.",

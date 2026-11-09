@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>MNX example: Cutaway staff | MNX specification</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="../../../static/styles.css">
+
+<style>
+.diff * { font-weight: bold; color: blue !important; }
+</style>
+
+</head>
+
+<body class="has-sidenav">
+<div class="topnav">
+    <button id="toggle" class="toggle">
+        <svg viewBox="0 0 100 80" width="16" height="16" fill="currentColor">
+          <rect width="100" height="20" rx="8"></rect>
+          <rect y="30" width="100" height="20" rx="8"></rect>
+          <rect y="60" width="100" height="20" rx="8"></rect>
+        </svg>
+    </button>
+    <a class="logo" href="../../../">
+        <span class="logo-text">MNX specification</span>
+    </a>
+</div>
+
+
+<div class="content">
+    <nav class="sidenav">
+        <ul>
+<li><a href="../../../">Home</a></li>
+<li><a href="../../objects/">Reference</a>
+    <ul>
+    <li><a href="../../objects/">Objects</a></li>
+    <li><a href="../">Example documents</a></li>
+    <li><a href="../../../mnx-schema.json">Raw JSON Schema</a></li>
+    </ul>
+</li>
+<li><a href="../../../comparisons/musicxml/">MNX and MusicXML</a></li>
+</ul>
+    </nav>
+    <main>
+    
+<p class="breadcrumb">
+    <a href="../../../">MNX specification</a> &gt;
+    <a href="../../">MNX reference</a> &gt;
+    <a href="../">Examples</a> &gt;
+    Cutaway staff
+</p>
+
+<h1>Cutaway staff</h1>
+
+
+<p><img src="../../../static/examples/cutaway-staff.png"></p>
+
+
+
+<p>The oboe staff is cut away from the start of measure 2 to the end of the system. The staff keeps its place in the layout. A staff change with &quot;cutaway&quot; set to true simply stops it from being drawn.</p>
+
+
+
+
+<div class="xmlmarkup">{
+   <a class="tag" href="../../objects/root/">"mnx"</a>: {
+      <a class="tag" href="../../objects/mnx/">"version"</a>: <a class="tag" href="../../objects/version-number/">1</a>
+   },
+   <a class="tag" href="../../objects/root/">"global"</a>: {
+      <a class="tag" href="../../objects/global/">"measures"</a>: [
+         {
+            <a class="tag" href="../../objects/measure-global/">"id"</a>: <a class="tag" href="../../objects/id/">"m1"</a>,
+            <a class="tag" href="../../objects/measure-global/">"time"</a>: {
+               <a class="tag" href="../../objects/time/">"count"</a>: <a class="tag" href="../../objects/positive-integer/">4</a>,
+               <a class="tag" href="../../objects/time/">"unit"</a>: <a class="tag" href="../../objects/time-signature-unit/">4</a>
+            }
+         },
+         {
+            <a class="tag" href="../../objects/measure-global/">"id"</a>: <a class="tag" href="../../objects/id/">"m2"</a>
+         },
+         {
+            <a class="tag" href="../../objects/measure-global/">"id"</a>: <a class="tag" href="../../objects/id/">"m3"</a>,
+            <a class="tag" href="../../objects/measure-global/">"barline"</a>: {
+               <a class="tag" href="../../objects/barline/">"type"</a>: <a class="tag" href="../../objects/barline-type/">"final"</a>
+            }
+         }
+      ]
+   },
+   <a class="tag" href="../../objects/root/">"layouts"</a>: [
+      {
+         <a class="tag" href="../../objects/system-layout/">"id"</a>: <a class="tag" href="../../objects/id/">"fluteOboe"</a>,
+         <a class="tag" href="../../objects/system-layout/">"content"</a>: [
+            {
+               <a class="tag" href="../../objects/staff-group/">"type"</a>: "group",
+               <a class="tag" href="../../objects/staff-group/">"content"</a>: [
+                  {
+                     <a class="tag" href="../../objects/staff/">"type"</a>: "staff",
+                     <a class="tag" href="../../objects/staff/">"labelref"</a>: <a class="tag" href="../../objects/staff-labelref/">"name"</a>,
+                     <a class="tag" href="../../objects/staff/">"sources"</a>: [
+                        {
+                           <a class="tag" href="../../objects/staff-source/">"part"</a>: <a class="tag" href="../../objects/id/">"flute"</a>
+                        }
+                     ]
+                  },
+                  {
+                     <b class="markuphl"><a class="tag" href="../../objects/staff/">"id"</a>:</b> <b class="markuphl"><a class="tag" href="../../objects/id/">"oboeStaff"</a>,</b>
+                     <a class="tag" href="../../objects/staff/">"type"</a>: "staff",
+                     <a class="tag" href="../../objects/staff/">"labelref"</a>: <a class="tag" href="../../objects/staff-labelref/">"name"</a>,
+                     <a class="tag" href="../../objects/staff/">"sources"</a>: [
+                        {
+                           <a class="tag" href="../../objects/staff-source/">"part"</a>: <a class="tag" href="../../objects/id/">"oboe"</a>
+                        }
+                     ]
+                  }
+               ],
+               <a class="tag" href="../../objects/staff-group/">"symbol"</a>: <a class="tag" href="../../objects/staff-symbol/">"bracket"</a>
+            }
+         ]
+      }
+   ],
+   <a class="tag" href="../../objects/root/">"parts"</a>: [
+      {
+         <a class="tag" href="../../objects/part/">"id"</a>: <a class="tag" href="../../objects/id/">"flute"</a>,
+         <a class="tag" href="../../objects/part/">"measures"</a>: [
+            {
+               <a class="tag" href="../../objects/part-measure/">"clefs"</a>: [
+                  {
+                     <a class="tag" href="../../objects/positioned-clef/">"clef"</a>: {
+                        <a class="tag" href="../../objects/clef/">"sign"</a>: <a class="tag" href="../../objects/clef-sign/">"G"</a>,
+                        <a class="tag" href="../../objects/clef/">"staffPosition"</a>: <a class="tag" href="../../objects/staff-position/">-2</a>
+                     }
+                  }
+               ],
+               <a class="tag" href="../../objects/part-measure/">"sequences"</a>: [
+                  {
+                     <a class="tag" href="../../objects/sequence/">"content"</a>: [
+                        {
+                           <a class="tag" href="../../objects/event/">"duration"</a>: {
+                              <a class="tag" href="../../objects/note-value/">"base"</a>: <a class="tag" href="../../objects/note-value-base/">"whole"</a>
+                           },
+                           <a class="tag" href="../../objects/event/">"notes"</a>: [
+                              {
+                                 <a class="tag" href="../../objects/note/">"pitch"</a>: {
+                                    <a class="tag" href="../../objects/pitch/">"octave"</a>: <a class="tag" href="../../objects/octave/">5</a>,
+                                    <a class="tag" href="../../objects/pitch/">"step"</a>: <a class="tag" href="../../objects/step/">"G"</a>
+                                 }
+                              }
+                           ]
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               <a class="tag" href="../../objects/part-measure/">"sequences"</a>: [
+                  {
+                     <a class="tag" href="../../objects/sequence/">"content"</a>: [
+                        {
+                           <a class="tag" href="../../objects/event/">"duration"</a>: {
+                              <a class="tag" href="../../objects/note-value/">"base"</a>: <a class="tag" href="../../objects/note-value-base/">"whole"</a>
+                           },
+                           <a class="tag" href="../../objects/event/">"notes"</a>: [
+                              {
+                                 <a class="tag" href="../../objects/note/">"pitch"</a>: {
+                                    <a class="tag" href="../../objects/pitch/">"octave"</a>: <a class="tag" href="../../objects/octave/">5</a>,
+                                    <a class="tag" href="../../objects/pitch/">"step"</a>: <a class="tag" href="../../objects/step/">"F"</a>
+                                 }
+                              }
+                           ]
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               <a class="tag" href="../../objects/part-measure/">"sequences"</a>: [
+                  {
+                     <a class="tag" href="../../objects/sequence/">"content"</a>: [
+                        {
+                           <a class="tag" href="../../objects/event/">"duration"</a>: {
+                              <a class="tag" href="../../objects/note-value/">"base"</a>: <a class="tag" href="../../objects/note-value-base/">"whole"</a>
+                           },
+                           <a class="tag" href="../../objects/event/">"notes"</a>: [
+                              {
+                                 <a class="tag" href="../../objects/note/">"pitch"</a>: {
+                                    <a class="tag" href="../../objects/pitch/">"octave"</a>: <a class="tag" href="../../objects/octave/">5</a>,
+                                    <a class="tag" href="../../objects/pitch/">"step"</a>: <a class="tag" href="../../objects/step/">"E"</a>
+                                 }
+                              }
+                           ]
+                        }
+                     ]
+                  }
+               ]
+            }
+         ],
+         <a class="tag" href="../../objects/part/">"name"</a>: <a class="tag" href="../../objects/part-name/">"Flute"</a>
+      },
+      {
+         <a class="tag" href="../../objects/part/">"id"</a>: <a class="tag" href="../../objects/id/">"oboe"</a>,
+         <a class="tag" href="../../objects/part/">"measures"</a>: [
+            {
+               <a class="tag" href="../../objects/part-measure/">"clefs"</a>: [
+                  {
+                     <a class="tag" href="../../objects/positioned-clef/">"clef"</a>: {
+                        <a class="tag" href="../../objects/clef/">"sign"</a>: <a class="tag" href="../../objects/clef-sign/">"G"</a>,
+                        <a class="tag" href="../../objects/clef/">"staffPosition"</a>: <a class="tag" href="../../objects/staff-position/">-2</a>
+                     }
+                  }
+               ],
+               <a class="tag" href="../../objects/part-measure/">"sequences"</a>: [
+                  {
+                     <a class="tag" href="../../objects/sequence/">"content"</a>: [
+                        {
+                           <a class="tag" href="../../objects/event/">"duration"</a>: {
+                              <a class="tag" href="../../objects/note-value/">"base"</a>: <a class="tag" href="../../objects/note-value-base/">"half"</a>
+                           },
+                           <a class="tag" href="../../objects/event/">"notes"</a>: [
+                              {
+                                 <a class="tag" href="../../objects/note/">"pitch"</a>: {
+                                    <a class="tag" href="../../objects/pitch/">"octave"</a>: <a class="tag" href="../../objects/octave/">5</a>,
+                                    <a class="tag" href="../../objects/pitch/">"step"</a>: <a class="tag" href="../../objects/step/">"C"</a>
+                                 }
+                              }
+                           ]
+                        },
+                        {
+                           <a class="tag" href="../../objects/event/">"duration"</a>: {
+                              <a class="tag" href="../../objects/note-value/">"base"</a>: <a class="tag" href="../../objects/note-value-base/">"half"</a>
+                           },
+                           <a class="tag" href="../../objects/event/">"rest"</a>: {}
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               <a class="tag" href="../../objects/part-measure/">"sequences"</a>: [
+                  {
+                     <a class="tag" href="../../objects/sequence/">"content"</a>: [
+                        {
+                           <a class="tag" href="../../objects/event/">"duration"</a>: {
+                              <a class="tag" href="../../objects/note-value/">"base"</a>: <a class="tag" href="../../objects/note-value-base/">"whole"</a>
+                           },
+                           <a class="tag" href="../../objects/event/">"rest"</a>: {}
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               <a class="tag" href="../../objects/part-measure/">"sequences"</a>: [
+                  {
+                     <a class="tag" href="../../objects/sequence/">"content"</a>: [
+                        {
+                           <a class="tag" href="../../objects/event/">"duration"</a>: {
+                              <a class="tag" href="../../objects/note-value/">"base"</a>: <a class="tag" href="../../objects/note-value-base/">"whole"</a>
+                           },
+                           <a class="tag" href="../../objects/event/">"rest"</a>: {}
+                        }
+                     ]
+                  }
+               ]
+            }
+         ],
+         <a class="tag" href="../../objects/part/">"name"</a>: <a class="tag" href="../../objects/part-name/">"Oboe"</a>
+      }
+   ],
+   <a class="tag" href="../../objects/root/">"scores"</a>: [
+      {
+         <a class="tag" href="../../objects/score/">"layout"</a>: <a class="tag" href="../../objects/id/">"fluteOboe"</a>,
+         <a class="tag" href="../../objects/score/">"name"</a>: <a class="tag" href="../../objects/score-name/">"Score"</a>,
+         <a class="tag" href="../../objects/score/">"pages"</a>: [
+            {
+               <a class="tag" href="../../objects/page/">"systems"</a>: [
+                  {
+                     <a class="tag" href="../../objects/system/">"measure"</a>: <a class="tag" href="../../objects/id/">"m1"</a>,
+                     <b class="markuphl"><a class="tag" href="../../objects/system/">"staffChanges"</a>:</b> <b class="markuphl">[</b>
+                        <b class="markuphl">{</b>
+                           <b class="markuphl"><a class="tag" href="../../objects/staff-change/">"cutaway"</a>:</b> <b class="markuphl"><a class="tag" href="../../objects/boolean/">true</a>,</b>
+                           <b class="markuphl"><a class="tag" href="../../objects/staff-change/">"staff"</a>:</b> <b class="markuphl"><a class="tag" href="../../objects/id/">"oboeStaff"</a>,</b>
+                           <b class="markuphl"><a class="tag" href="../../objects/staff-change/">"start"</a>:</b> <b class="markuphl">{</b>
+                              <b class="markuphl"><a class="tag" href="../../objects/measure-rhythmic-position/">"measure"</a>:</b> <b class="markuphl"><a class="tag" href="../../objects/id/">"m2"</a>,</b>
+                              <b class="markuphl"><a class="tag" href="../../objects/measure-rhythmic-position/">"position"</a>:</b> <b class="markuphl">{</b>
+                                 <b class="markuphl"><a class="tag" href="../../objects/rhythmic-position/">"fraction"</a>:</b> <b class="markuphl">[</b>
+                                    <b class="markuphl"><a class="tag" href="../../objects/integer-unsigned/">0</a>,</b>
+                                    <b class="markuphl"><a class="tag" href="../../objects/integer-unsigned/">1</a></b>
+                                 <b class="markuphl">]</b>
+                              <b class="markuphl">}</b>
+                           <b class="markuphl">}</b>
+                        <b class="markuphl">}</b>
+                     <b class="markuphl">]</b>
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}</div>
+
+    </main>
+</div>
+
+
+<script type="text/javascript" src="../../../static/global.js"></script>
+
+</body>
+</html>
