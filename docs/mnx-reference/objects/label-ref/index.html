@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>The staff labelref object | MNX specification</title>
+<title>The label ref object | MNX specification</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" href="../../../static/styles.css">
@@ -44,43 +44,68 @@
     <a href="../../../">MNX specification</a> &gt;
     <a href="../../">MNX reference</a> &gt;
     <a href="../">Objects</a> &gt;
-    staff labelref
+    label ref
 </p>
 
-<h1>The staff labelref object</h1>
+<h1>The label ref object</h1>
 
-<p><b>Type:</b> String</p>
-
-
-
-
-<p>This data encodes the answer to the question: "should we display the part's name or the part's shortName"?</p>
+<p><b>Type:</b> Dictionary</p>
 
 
 
 
+<p>The label ref object displays a part's name or shortName as the label for a staff, staff source or staff group, so the name doesn't need to be duplicated in the layout.</p>
 
-<h2>Allowed values:</h2>
+<p>As with the "label" attribute of <a href="../staff/">staff</a>, <a href="../staff-group/">staff group</a> and <a href="../staff-source/">staff source</a>, any label ref that is provided should be displayed, and consuming software decides how best to position it.</p>
+
+
+
+<h2>Attributes</h2>
 
 <table>
 <thead>
 <tr>
-    <th>Value</th>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Required?</th>
     <th>Description</th>
 </tr>
 </thead>
 
+
 <tr>
-    <td><nobr><b>&quot;name&quot;</b></nobr></td>
-    <td>Use the <a href="../part/">part</a>'s "name" attribute.</td>
+    <td><nobr><b>ref</b></nobr></td>
+    <td>
+        
+        <a href="../label-ref-type/">label ref type</a>
+        
+    </td>
+    <td>No</td>
+    <td>Which name to display. If omitted, the default value is "auto".</td>
 </tr>
 
 <tr>
-    <td><nobr><b>&quot;shortName&quot;</b></nobr></td>
-    <td>Use the <a href="../part/">part</a>'s "shortName" attribute.</td>
+    <td><nobr><b>target</b></nobr></td>
+    <td>
+        
+        <a href="../id/">ID</a>
+        
+    </td>
+    <td>No</td>
+    <td>The ID of the <a href="../part/">part</a> whose name is displayed.<br><br>If omitted on a staff source, the target is the source's own part. If omitted on a staff, the target is the part of the staff's first source. If omitted on a staff group, consuming software determines the target.<br><br>We recommend always supplying the target for staff group objects.</td>
 </tr>
+
 
 </table>
+
+
+<p>Plus <a href="../global-attrs/">globally available attributes</a>:
+<b>_c</b>, <b>_x</b>, <b>id</b>
+</p>
+
+
+
+
 
 
 
@@ -90,9 +115,11 @@
 
 <ul>
 
-<li><a href="../staff/">staff</a>: "labelref"</li>
+<li><a href="../staff/">staff</a>: "labelRef"</li>
 
-<li><a href="../staff-source/">staff source</a>: "labelref"</li>
+<li><a href="../staff-group/">staff group</a>: "labelRef"</li>
+
+<li><a href="../staff-source/">staff source</a>: "labelRef"</li>
 
 </ul>
 
