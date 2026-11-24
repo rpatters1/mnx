@@ -58,7 +58,7 @@
 
 
 
-<p>In this image, you see three different representations of the same underlying SATB music — one with four separate staves, one with two staves (using multiple voices) and one with two staves (using notes combined into chords).<br><br>This can be encoded entirely within a single MNX document. The underlying music (the notes, barlines, etc.) is encoded only once, within the &quot;global&quot; and &quot;part&quot; objects. But there are three separate score objects — one for each visual representation of the music.<br><br>A score references a particular layout. The layout object is where the style information is contained: which parts, in which order.</p>
+<p>In this image, you see three different representations of the same underlying SATB music — one with four separate staves, one with two staves (using multiple voices) and one with two staves (using notes combined into chords).<br><br>This can be encoded entirely within a single MNX document. The underlying music (the notes, barlines, etc.) is encoded only once, within the &quot;global&quot; and &quot;part&quot; objects. But there are three separate score objects — one for each visual representation of the music.<br><br>A score references a particular layout. The layout object is where the style information is contained: which parts, in which order.<br><br>In the &quot;TwoStaffChord&quot; score, the tenor and bass switch from chords to separate stem directions at measure 2. This is encoded as a single staff change targeting the TB staff.</p>
 
 
 
@@ -190,6 +190,7 @@
                      ]
                   },
                   {
+                     <b class="markuphl"><a class="tag" href="../../objects/staff/">"id"</a>:</b> <b class="markuphl"><a class="tag" href="../../objects/id/">"chordedTB"</a>,</b>
                      <a class="tag" href="../../objects/staff/">"type"</a>: "staff",
                      <a class="tag" href="../../objects/staff/">"label"</a>: <a class="tag" href="../../objects/staff-label/">"TB"</a>,
                      <a class="tag" href="../../objects/staff/">"sources"</a>: [
@@ -198,44 +199,6 @@
                         },
                         {
                            <a class="tag" href="../../objects/staff-source/">"part"</a>: <a class="tag" href="../../objects/id/">"bass"</a>
-                        }
-                     ]
-                  }
-               ],
-               <a class="tag" href="../../objects/staff-group/">"symbol"</a>: <a class="tag" href="../../objects/staff-symbol/">"bracket"</a>
-            }
-         ]
-      },
-      {
-         <a class="tag" href="../../objects/system-layout/">"id"</a>: <a class="tag" href="../../objects/id/">"Choral2StaffMenSplit"</a>,
-         <a class="tag" href="../../objects/system-layout/">"content"</a>: [
-            {
-               <a class="tag" href="../../objects/staff-group/">"type"</a>: "group",
-               <a class="tag" href="../../objects/staff-group/">"barlineStyle"</a>: <a class="tag" href="../../objects/staff-group-barline-style/">"individual"</a>,
-               <a class="tag" href="../../objects/staff-group/">"content"</a>: [
-                  {
-                     <a class="tag" href="../../objects/staff/">"type"</a>: "staff",
-                     <a class="tag" href="../../objects/staff/">"label"</a>: <a class="tag" href="../../objects/staff-label/">"SA"</a>,
-                     <a class="tag" href="../../objects/staff/">"sources"</a>: [
-                        {
-                           <a class="tag" href="../../objects/staff-source/">"part"</a>: <a class="tag" href="../../objects/id/">"soprano"</a>
-                        },
-                        {
-                           <a class="tag" href="../../objects/staff-source/">"part"</a>: <a class="tag" href="../../objects/id/">"alto"</a>
-                        }
-                     ]
-                  },
-                  {
-                     <a class="tag" href="../../objects/staff/">"type"</a>: "staff",
-                     <a class="tag" href="../../objects/staff/">"label"</a>: <a class="tag" href="../../objects/staff-label/">"TB"</a>,
-                     <a class="tag" href="../../objects/staff/">"sources"</a>: [
-                        {
-                           <a class="tag" href="../../objects/staff-source/">"part"</a>: <a class="tag" href="../../objects/id/">"tenor"</a>,
-                           <a class="tag" href="../../objects/staff-source/">"stem"</a>: <a class="tag" href="../../objects/stem-direction/">"up"</a>
-                        },
-                        {
-                           <a class="tag" href="../../objects/staff-source/">"part"</a>: <a class="tag" href="../../objects/id/">"bass"</a>,
-                           <a class="tag" href="../../objects/staff-source/">"stem"</a>: <a class="tag" href="../../objects/stem-direction/">"down"</a>
                         }
                      ]
                   }
@@ -784,21 +747,31 @@
                <a class="tag" href="../../objects/page/">"systems"</a>: [
                   {
                      <a class="tag" href="../../objects/system/">"layout"</a>: <a class="tag" href="../../objects/id/">"Choral2StaffChorded"</a>,
-                     <a class="tag" href="../../objects/system/">"layoutChanges"</a>: [
-                        {
-                           <a class="tag" href="../../objects/layout-change/">"layout"</a>: <a class="tag" href="../../objects/id/">"Choral2StaffMenSplit"</a>,
-                           <a class="tag" href="../../objects/layout-change/">"location"</a>: {
-                              <a class="tag" href="../../objects/measure-rhythmic-position/">"measure"</a>: <a class="tag" href="../../objects/id/">"m2"</a>,
-                              <a class="tag" href="../../objects/measure-rhythmic-position/">"position"</a>: {
-                                 <a class="tag" href="../../objects/rhythmic-position/">"fraction"</a>: [
-                                    <a class="tag" href="../../objects/integer-unsigned/">0</a>,
-                                    <a class="tag" href="../../objects/integer-unsigned/">1</a>
-                                 ]
-                              }
-                           }
-                        }
-                     ],
-                     <a class="tag" href="../../objects/system/">"measure"</a>: <a class="tag" href="../../objects/id/">"m1"</a>
+                     <a class="tag" href="../../objects/system/">"measure"</a>: <a class="tag" href="../../objects/id/">"m1"</a>,
+                     <b class="markuphl"><a class="tag" href="../../objects/system/">"staffChanges"</a>:</b> <b class="markuphl">[</b>
+                        <b class="markuphl">{</b>
+                           <b class="markuphl"><a class="tag" href="../../objects/staff-change/">"sources"</a>:</b> <b class="markuphl">[</b>
+                              <b class="markuphl">{</b>
+                                 <b class="markuphl"><a class="tag" href="../../objects/staff-source/">"part"</a>:</b> <b class="markuphl"><a class="tag" href="../../objects/id/">"tenor"</a>,</b>
+                                 <b class="markuphl"><a class="tag" href="../../objects/staff-source/">"stem"</a>:</b> <b class="markuphl"><a class="tag" href="../../objects/stem-direction/">"up"</a></b>
+                              <b class="markuphl">},</b>
+                              <b class="markuphl">{</b>
+                                 <b class="markuphl"><a class="tag" href="../../objects/staff-source/">"part"</a>:</b> <b class="markuphl"><a class="tag" href="../../objects/id/">"bass"</a>,</b>
+                                 <b class="markuphl"><a class="tag" href="../../objects/staff-source/">"stem"</a>:</b> <b class="markuphl"><a class="tag" href="../../objects/stem-direction/">"down"</a></b>
+                              <b class="markuphl">}</b>
+                           <b class="markuphl">],</b>
+                           <b class="markuphl"><a class="tag" href="../../objects/staff-change/">"staff"</a>:</b> <b class="markuphl"><a class="tag" href="../../objects/id/">"chordedTB"</a>,</b>
+                           <b class="markuphl"><a class="tag" href="../../objects/staff-change/">"start"</a>:</b> <b class="markuphl">{</b>
+                              <b class="markuphl"><a class="tag" href="../../objects/measure-rhythmic-position/">"measure"</a>:</b> <b class="markuphl"><a class="tag" href="../../objects/id/">"m2"</a>,</b>
+                              <b class="markuphl"><a class="tag" href="../../objects/measure-rhythmic-position/">"position"</a>:</b> <b class="markuphl">{</b>
+                                 <b class="markuphl"><a class="tag" href="../../objects/rhythmic-position/">"fraction"</a>:</b> <b class="markuphl">[</b>
+                                    <b class="markuphl"><a class="tag" href="../../objects/integer-unsigned/">0</a>,</b>
+                                    <b class="markuphl"><a class="tag" href="../../objects/integer-unsigned/">1</a></b>
+                                 <b class="markuphl">]</b>
+                              <b class="markuphl">}</b>
+                           <b class="markuphl">}</b>
+                        <b class="markuphl">}</b>
+                     <b class="markuphl">]</b>
                   }
                ]
             }
